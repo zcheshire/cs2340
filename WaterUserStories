@@ -1,0 +1,10 @@
+
+There are 4 authorization levels(USER,WORKER,MANAGER,ADMINISTRATOR)
+
+-As a USER I want to be able to submit a report on water availability and be able to view available water sources.
+
+-As a WORKER I want to be able to submit a report on water availability and be able to view available water sources as well as report on water purity levels.
+
+-As a MANAGER I want to be able to submit a report on water availability and be able to view available water sources as well as report on water purity levels.Additionally, I can view historical reports and trends of water purity. I can also delete individual reports.
+
+-As a ADMINISTRATOR I can delete any accounts, ban a user from submitting reports (although that user can still view water sources). I can also unblock an account that has been locked for incorrect login attempts. I can view the security log.
