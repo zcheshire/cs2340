@@ -1,4 +1,4 @@
-package com.gitrekt.water;
+package com.gitrekt.water.controller;
 
 import android.app.AlertDialog;
 import android.content.Context;
@@ -8,6 +8,10 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.EditText;
+
+import com.gitrekt.water.R;
+import com.gitrekt.water.model.Model;
+import com.gitrekt.water.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
@@ -31,24 +35,28 @@ public class LoginActivity extends AppCompatActivity {
         //Get a reference to the model
         Model model = Model.getInstance();
 
+        model.setCurrentUser(new User("xxx", "yyy"));
+
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
-        if (_user.getUsername().equals(model.currentUser.getUsername())
-                && _user.getPassword().equals(model.currentUser.getPassword())) {
+        if (_user.getUserName().equals(model.getCurrentUser().getUserName())
+                && _user.getPassWord().equals(model.getCurrentUser().getPassWord())) {
             model.setCurrentUser(_user);
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         } else {
             Context context = view.getContext();
-            new AlertDialog.Builder(context)
-                    .setTitle("Login Error")
-                    .setMessage("Username and password do not match")
-                    .setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int which) {
-                            // User clicked OK button
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Username and password do not match");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
                         }
-                    })
-                    //.setIcon(android.R.drawable.ic_dialog_alert)
-                    .show();
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
         }
     }
 }

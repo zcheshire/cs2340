@@ -1,15 +1,11 @@
-package com.gitrekt.water;
+package com.gitrekt.water.controller;
 
 import android.content.Intent;
-import android.net.Uri;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 
-import com.google.android.gms.appindexing.Action;
-import com.google.android.gms.appindexing.AppIndex;
-import com.google.android.gms.appindexing.Thing;
-import com.google.android.gms.common.api.GoogleApiClient;
+import com.gitrekt.water.R;
 
 public class MainActivity extends AppCompatActivity {
 
