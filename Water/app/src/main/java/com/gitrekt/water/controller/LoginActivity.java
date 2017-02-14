@@ -15,6 +15,8 @@ import com.gitrekt.water.model.User;
 
 public class LoginActivity extends AppCompatActivity {
 
+    private Model model;
+
     private EditText emailField;
     private EditText passwordField;
 
@@ -22,6 +24,11 @@ public class LoginActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
+
+        model = Model.getInstance();
+        //Hardcoded values for the login, will be replaced
+        model.setCurrentUser(new User("xxx", "yyy"));
+
         emailField = (EditText) findViewById(R.id.loginEmail);
         passwordField = (EditText) findViewById(R.id.loginPassword);
     }
@@ -32,11 +39,6 @@ public class LoginActivity extends AppCompatActivity {
     }
 
     public void performLogin(View view) {
-        //Get a reference to the model
-        Model model = Model.getInstance();
-
-        model.setCurrentUser(new User("xxx", "yyy"));
-
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
         if (_user.getUserName().equals(model.getCurrentUser().getUserName())
                 && _user.getPassWord().equals(model.getCurrentUser().getPassWord())) {
