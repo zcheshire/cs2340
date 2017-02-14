@@ -17,7 +17,7 @@
         android:ems="10"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:id="@+id/editText"
+        android:id="@+id/loginEmail"
         android:hint="Email" />
 
     <EditText
@@ -25,29 +25,31 @@
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:layout_below="@+id/editText"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText"
+        android:layout_below="@+id/loginEmail"
+        android:layout_alignLeft="@+id/loginEmail"
+        android:layout_alignStart="@+id/loginEmail"
         android:layout_marginTop="34dp"
-        android:id="@+id/editText2"
+        android:id="@+id/loginPassword"
         android:hint="Password" />
 
     <Button
         android:text="Login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/editText2"
+        android:layout_below="@+id/loginPassword"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
-        android:id="@+id/button3" />
+        android:id="@+id/performLoginButton"
+        android:onClick="performLogin" />
 
     <Button
         android:text="Cancel"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/button3"
-        android:layout_alignLeft="@+id/button3"
-        android:layout_alignStart="@+id/button3"
+        android:layout_below="@+id/performLoginButton"
+        android:layout_alignLeft="@+id/performLoginButton"
+        android:layout_alignStart="@+id/performLoginButton"
         android:layout_marginTop="49dp"
-        android:id="@+id/button4" />
+        android:id="@+id/cancelLoginButton"
+        android:onClick="cancelLogin" />
 </RelativeLayout>
