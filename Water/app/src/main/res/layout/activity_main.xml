@@ -2,31 +2,36 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/activity_main"
-    android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.gitrekt.water.controller.MainActivity">
-
-    <Button
-        android:text="Login"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/textView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="47dp"
-        android:id="@+id/loginButton"
-        android:onClick="login"/>
+    tools:context="com.gitrekt.water.controller.MainActivity"
+    android:layout_width="match_parent">
 
     <Button
         android:text="Register"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginButton"
-        android:layout_alignLeft="@+id/loginButton"
-        android:layout_alignStart="@+id/loginButton"
-        android:layout_marginTop="42dp"
-        android:id="@+id/registerButton" />
+        android:id="@+id/registerButton"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="21dp"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+
+    <Button
+        android:text="Login"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginButton"
+        android:onClick="login"
+        android:layout_above="@+id/registerButton"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="13dp"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:backgroundTint="@color/common_google_signin_btn_text_dark_focused" />
 </RelativeLayout>
