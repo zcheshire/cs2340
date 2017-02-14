@@ -1,18 +1,29 @@
 
-There are 4 authorization levels(USER,WORKER,MANAGER,ADMINISTRATOR)
+There are 5 authorization levels(POTENTIAL USER, REGISTERED USER, WORKER, MANAGER, ADMINISTRATOR)
 
--As a USER I want to be able to submit a report on water availability. When making a water source report the user should be able to enter the location of the water, type of water, and the condition of the water.
-I can also view available water sources which will be displayed on a map consisting of the water type and condition.
-When I log in I want to see the water availability map view.
+-As a POTENTIAL USER, I want to create a new account so I can begin to use the app.
+-As a POTENTIAL USER, I want to log in to an existing account so I can resume activity on an existing account.
 
--As a WORKER I can submit a report on water availability and be able to view available water sources
-I can report on water purity levels by entering the condition of the water(safe, treatable, unsafe), the location of the water, virus ppm, and containment ppm.
-When I log in I want to see the water source report view.
+-As a REGISTERED USER, I want to submit a report on water availability detailing the location, type, and condition of the water so I can contribute to the data in the app.
+-As a REGISTERED USER, I want to view available water sources upon logging in so I can find water sources near me.
+-As a REGISTERED USER, I want to edit my existing reports on water sources so I can ensure that all my information is up to date.
 
+-As a WORKER, I want to submit a report on water availability detailing the location, type, and condition of the water so I can contribute to the data in the app.
+-As a WORKER, I want to report on water purity levels by entering the condition of the water (safe, treatable, unsafe), the location of the water, virus ppm, and containment ppm, so I can update the purity data in the app.
+-As a WORKER, I want to view available water sources upon logging in so I can find water sources near me.
 
--As a MANAGER I want to be able to submit a report on water availability and be able to view available water sources as well as report on water purity levels.Additionally, I can view historical reports and trends of water purity by entering in a location, either virus or contaminant, or a year. The reports will then be displayed in a xy graph. I can also delete individual reports when I access the report feed. 
-When I log in I want to see the the view to search water reports.
+-As a MANAGER, I want to submit a report on water availability detailing the location, type, and condition of the water so I can contribute to the data in the app.
+-As a MANAGER, I want to report on water purity levels by entering the condition of the water (safe, treatable, unsafe), the location of the water, virus ppm, and containment ppm, so I can update the purity data in the app.
+-As a MANAGER, I want to view historical reports and trends of water purity by entering in a location, either virus or contaminant, or a year so I can view the reports in an xy graph.
+-As a MANAGER, I want to be able to delete user reports when I access the feed so I can keep false data off the app.
+-As a MANAGER, I want to view available water sources upon logging in so I can find water sources near me.
 
-
--As a ADMINISTRATOR I can delete any accounts, ban a user from submitting reports (although that user can still view water sources). I can also unblock an account that has been locked for incorrect login attempts. I can view the security log.
-When I log in I want to see the accounts view.
+-As an ADMINISTRATOR, I want to submit a report on water availability detailing the location, type, and condition of the water so I can contribute to the data in the app.
+-As an ADMINISTRATOR, I want to report on water purity levels by entering the condition of the water (safe, treatable, unsafe), the location of the water, virus ppm, and containment ppm, so I can update the purity data in the app.
+-As an ADMINISTRATOR, I want to view historical reports and trends of water purity by entering in a location, either virus or contaminant, or a year so I can view the reports in an xy graph.
+-As an ADMINISTRATOR, I want to be able to delete user reports when I access the feed so I can keep false data off the app.
+-As an ADMINISTRATOR, I want to delete any accounts so I can keep false accounts off the app.
+-As an ADMINISTRATOR, I want to ban a user from submitting reports so I can keep false reports off the app.
+-As an ADMINISTRATOR, I want to be able to unblock an account that has been locked for incorrect login attempts so users can access the app.
+-As an ADMINISTRATOR, I want to be able to view the security log so I can view the app utilization data.
+-As an ADMINISTRATOR, I want to view the accounts view upon logging in so I can see how people are using the app.
