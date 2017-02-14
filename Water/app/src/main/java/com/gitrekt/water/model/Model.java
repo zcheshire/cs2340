@@ -11,5 +11,17 @@ public class Model {
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
+    private User currentUser;
+    
+    public User getCurrentUser() {
 
+        return currentUser;
+
+    }
+
+    public void setCurrentUser(User user) {
+
+        this.currentUser = user;
+
+    }
 }
