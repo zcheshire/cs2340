@@ -1,0 +1,18 @@
+
+There are 4 authorization levels(USER,WORKER,MANAGER,ADMINISTRATOR)
+
+-As a USER I want to be able to submit a report on water availability. When making a water source report the user should be able to enter the location of the water, type of water, and the condition of the water.
+I can also view available water sources which will be displayed on a map consisting of the water type and condition.
+When I log in I want to see the water availability map view.
+
+-As a WORKER I can submit a report on water availability and be able to view available water sources
+I can report on water purity levels by entering the condition of the water(safe, treatable, unsafe), the location of the water, virus ppm, and containment ppm.
+When I log in I want to see the water source report view.
+
+
+-As a MANAGER I want to be able to submit a report on water availability and be able to view available water sources as well as report on water purity levels.Additionally, I can view historical reports and trends of water purity by entering in a location, either virus or contaminant, or a year. The reports will then be displayed in a xy graph. I can also delete individual reports when I access the report feed. 
+When I log in I want to see the the view to search water reports.
+
+
+-As a ADMINISTRATOR I can delete any accounts, ban a user from submitting reports (although that user can still view water sources). I can also unblock an account that has been locked for incorrect login attempts. I can view the security log.
+When I log in I want to see the accounts view.
