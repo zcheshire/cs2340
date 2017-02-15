@@ -36,4 +36,21 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_focused" />
+
+    <TextView
+        android:text="Water"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="146dp"
+        android:id="@+id/textView"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:textAlignment="center"
+        android:textSize="40sp"
+        android:textStyle="normal|bold"
+        android:textColor="@android:color/white"
+        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
 </RelativeLayout>
