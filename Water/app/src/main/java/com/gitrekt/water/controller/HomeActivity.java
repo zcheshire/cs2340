@@ -16,6 +16,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView loginMessage;
     private Button logoutButton;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,9 +30,13 @@ public class HomeActivity extends AppCompatActivity {
         loginMessage.setText("Welcome, " + model.getCurrentUser().getUserName() + "!");
     }
 
+    //Overriding back so user can't return to login screen without logging out
+    @Override
+    public void onBackPressed() {
+    }
+
     public void logout(View view) {
         model.setCurrentUser(null);
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        super.onBackPressed();
     }
 }
