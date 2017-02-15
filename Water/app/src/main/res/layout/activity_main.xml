@@ -9,8 +9,8 @@
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gitrekt.water.controller.MainActivity"
-    android:background="@drawable/water"
-    android:layout_width="match_parent">
+    android:layout_width="match_parent"
+    android:background="@drawable/water">
 
     <Button
         android:text="Login"
