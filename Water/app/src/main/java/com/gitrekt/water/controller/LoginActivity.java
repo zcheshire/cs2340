@@ -25,27 +25,39 @@ public class LoginActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login);
 
+        //Get a reference to the model singleton
         model = Model.getInstance();
         //Hardcoded values for the login, will be replaced
         model.setCurrentUser(new User("xxx", "yyy"));
 
+        //Get references to the view objects we interface with
         emailField = (EditText) findViewById(R.id.loginEmail);
         passwordField = (EditText) findViewById(R.id.loginPassword);
     }
 
     public void cancelLogin(View view) {
-        Intent intent = new Intent(this, MainActivity.class);
-        startActivity(intent);
+        //Just return to the parent activity (main activity)
+        this.onBackPressed();
     }
 
     public void performLogin(View view) {
+        //Create a new user from the username and password fields
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
+
+        //For now, it just compares to the values hardcoded in onCreate
         if (_user.getUserName().equals(model.getCurrentUser().getUserName())
                 && _user.getPassWord().equals(model.getCurrentUser().getPassWord())) {
             model.setCurrentUser(_user);
+
+            //Move on to the Home Screen once logged in
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
+
+            //If they return from HomeActivity (Logout),
+            //this will return to the parent activity (main activity)
+            finish();
         } else {
+            //If username/pass do not match, create a dialog to let them know
             Context context = view.getContext();
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
             builder1.setMessage("Username and password do not match");
