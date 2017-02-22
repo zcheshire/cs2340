@@ -58,7 +58,7 @@
         android:layout_marginLeft="16dp"
         android:layout_marginStart="16dp"
         android:layout_marginBottom="37dp"
-        android:id="@+id/editText"
+        android:id="@+id/registerEmail"
         android:text="email" />
 
     <EditText
@@ -67,9 +67,9 @@
         android:inputType="textPersonName"
         android:text="password"
         android:ems="10"
-        android:id="@+id/editText2"
+        android:id="@+id/registerPassword"
         android:layout_alignBaseline="@+id/textView4"
         android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/editText"
-        android:layout_alignStart="@+id/editText" />
+        android:layout_alignLeft="@+id/registerEmail"
+        android:layout_alignStart="@+id/registerEmail" />
 </RelativeLayout>
