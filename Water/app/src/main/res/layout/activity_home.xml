@@ -27,4 +27,14 @@
         android:layout_marginTop="58dp"
         android:id="@+id/logoutButton"
         android:onClick="logout" />
+
+    <Button
+        android:text="Settings"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/settingsButton"
+        android:onClick="settings" />
 </RelativeLayout>

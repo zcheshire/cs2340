@@ -7,7 +7,9 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
+import android.widget.Spinner;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
@@ -21,8 +23,10 @@ public class SettingsActivity extends AppCompatActivity {
     private Model model;
 
     private EditText emailField;
-    private EditText userTypeField;
-    private UserType userType;
+    private EditText passwordField;
+    private Spinner selectedType;
+
+    ArrayAdapter<UserType> userTypeAdapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,59 +38,61 @@ public class SettingsActivity extends AppCompatActivity {
         //Hardcoded values for the login, will be replaced
 
         //Get references to the view objects we interface with
-        emailField = (EditText) findViewById(R.id.loginEmail);
-        userTypeField = (EditText) findViewById(R.id.loginPassword);
+        emailField = (EditText) findViewById(R.id.editEmail);
+        passwordField = (EditText) findViewById(R.id.editPassword);
+
+        selectedType = (Spinner) findViewById(R.id.userTypeSpinner);
+        userTypeAdapter =
+                new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, UserType.values());
+
+        userTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        selectedType.setAdapter(userTypeAdapter);
     }
     public void cancelEdit(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
     public void performEdit(View view) {
-        User _user = new User();
-        //Create a new user from the username and password fields
-        if (model.getCurrentUser().getUserName().equals(emailField)
-                && model.getCurrentUser().getUserType().equals(userTypeField) ) {
+        User _user = model.getCurrentUser();
 
-            return;
-        } else if (model.getCurrentUser().getUserName().equals(emailField)
-                && !model.getCurrentUser().getUserType().equals(userTypeField)) {
+        emailField.setText(_user.getUserName());
+        passwordField.setText(_user.getPassWord());
+        selectedType.setSelection(userTypeAdapter.getPosition(_user.getUserType()));
 
-            _user = new User(model.getCurrentUser().getUserName(),model.getCurrentUser().getPassWord(), userType);
-            model.setCurrentUser(_user);
+        ArrayList<User> uList = model.getUserList();
+        for (User u: uList) {
+            if (_user.getUserName().equals(u.getUserName())) {
 
-        } else {
-            boolean doesNotExist;
-            ArrayList<User> uList = model.getUserList();
-            for (User u : uList) {
-                if (emailField.getText().toString().equals(u.getUserName())) {
-                    Context context = view.getContext();
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Username is taken");
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                    return;
-
-                    //Move on to the Home Screen once logged in
-                    //Intent intent = new Intent(this, HomeActivity.class);
-                    //startActivity(intent);
-
-                    //If they return from HomeActivity (Logout),
-                    //this will return to the parent activity (main activity)
-                }
+                //If username is taken, then notify user
+                Context context = view.getContext();
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Username is already taken");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                emailField.setText("");
+                passwordField.setText("");
+                return;
             }
 
-            _user = new User(emailField.getText().toString(),model.getCurrentUser().getPassWord(), model.getCurrentUser().getUserType());
-            model.setCurrentUser(_user);
 
         }
+        model.removeUser(_user);
 
+        _user = new User(emailField.getText().toString(),
+                passwordField.getText().toString(),
+                (UserType) selectedType.getSelectedItem());
+
+        model.addUser(_user);
+        model.setCurrentUser(_user);
+        finish();
     }
 }

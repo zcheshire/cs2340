@@ -59,32 +59,44 @@
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:id="@+id/editUserType"
+        android:id="@+id/editPassword"
         android:layout_alignBaseline="@+id/textView7"
         android:layout_alignBottom="@+id/textView7"
         android:layout_alignLeft="@+id/editEmail"
         android:layout_alignStart="@+id/editEmail" />
 
     <Button
-        android:text="Cancel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button2"
-        android:layout_alignBaseline="@+id/editButtton"
-        android:layout_alignBottom="@+id/editButtton"
-        android:layout_toRightOf="@+id/textView6"
-        android:layout_toEndOf="@+id/textView6"
-        android:onClick="cancelEdit" />
-
-    <Button
         android:text="Edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editButtton"
-        android:layout_centerVertical="true"
-        android:layout_alignRight="@+id/editUserType"
-        android:layout_alignEnd="@+id/editUserType"
-        android:layout_marginRight="34dp"
-        android:layout_marginEnd="34dp"
-        android:onClick="performEdit" />
+        android:layout_marginRight="24dp"
+        android:layout_marginEnd="24dp"
+        android:onClick="performEdit"
+        android:layout_alignParentBottom="true"
+        android:layout_alignRight="@+id/editPassword"
+        android:layout_alignEnd="@+id/editPassword"
+        android:layout_marginBottom="87dp" />
+
+    <Button
+        android:text="Cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button2"
+        android:onClick="cancelEdit"
+        android:layout_alignBaseline="@+id/editButtton"
+        android:layout_alignBottom="@+id/editButtton"
+        android:layout_toRightOf="@+id/textView6"
+        android:layout_toEndOf="@+id/textView6" />
+
+    <Spinner
+        android:layout_height="wrap_content"
+        android:id="@+id/userTypeSpinner"
+        android:layout_width="match_parent"
+        android:layout_below="@+id/editPassword"
+        android:layout_marginTop="63dp"
+        android:layout_alignLeft="@+id/button2"
+        android:layout_alignStart="@+id/button2"
+        android:layout_alignRight="@+id/editPassword"
+        android:layout_alignEnd="@+id/editPassword" />
 </RelativeLayout>
