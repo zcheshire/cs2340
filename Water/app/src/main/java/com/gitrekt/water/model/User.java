@@ -27,6 +27,12 @@ public class User {
         return userName;
     }
 
+    public UserType getUserType() {
+
+        return this.userType;
+
+    }
+
     public void setUserName(String userName) {
         this.userName = userName;
     }
