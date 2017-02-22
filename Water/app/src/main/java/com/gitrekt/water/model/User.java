@@ -15,6 +15,10 @@ public class User {
         this.userType = userType;
     }
 
+    public User(String userName, String passWord) {
+        this(userName, passWord, null);
+    }
+
     public User() {
         this(null, null, null);
     }

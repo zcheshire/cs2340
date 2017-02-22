@@ -5,5 +5,18 @@ package com.gitrekt.water.model;
  */
 
 public enum UserType {
-    USER, WORKER, MANAGER, ADMIN
+    USER("User"),
+    WORKER("Worker"),
+    MANAGER("Manager"),
+    ADMIN("Admin")
+
+    private String name;
+
+    UserType(String name) {
+        this.name = name;
+    }
+
+    public String toString() {
+        return this.name;
+    }
 }
