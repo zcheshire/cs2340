@@ -15,6 +15,8 @@ import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.User;
 import com.gitrekt.water.model.UserType;
 
+import java.util.ArrayList;
+
 public class RegisterActivity extends AppCompatActivity {
     private Model model;
     private UserType userType;
@@ -28,7 +30,7 @@ public class RegisterActivity extends AppCompatActivity {
         //Get a reference to the model singleton
         model = Model.getInstance();
         //Hardcoded values for the login, will be replaced
-        model.setCurrentUser(new User("xxx", "yyy"));
+        //model.setCurrentUser(new User(emailRegisterField.getText(), passwordRegisterField.getText()));
 
         //Get references to the view objects we interface with
         emailRegisterField = (EditText) findViewById(R.id.registerEmail);
@@ -44,9 +46,32 @@ public class RegisterActivity extends AppCompatActivity {
     public void performRegister(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailRegisterField.getText().toString(), passwordRegisterField.getText().toString(), userType);
+        ArrayList<User> uList = model.getUserList();
+        for (User u: uList) {
+            if (_user.getUserName().equals(u.getUserName())) {
 
-        //For now, it just compares to the values hardcoded in onCreate
-        if (_user.validate(model.getCurrentUser())) {
+                //If username/pass do not match, create a dialog to let them know
+                Context context = view.getContext();
+                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                builder1.setMessage("Username is already taken");
+                builder1.setCancelable(true);
+                builder1.setPositiveButton(
+                        "OK",
+                        new DialogInterface.OnClickListener() {
+                            public void onClick(DialogInterface dialog, int id) {
+                                dialog.cancel();
+                            }
+                        });
+                AlertDialog alert11 = builder1.create();
+                alert11.show();
+                emailRegisterField.setText("");
+                passwordRegisterField.setText("");
+                return;
+            }
+
+
+        }
+            model.addUser(_user);
             model.setCurrentUser(_user);
 
             //Move on to the Home Screen once logged in
@@ -56,21 +81,6 @@ public class RegisterActivity extends AppCompatActivity {
             //If they return from HomeActivity (Logout),
             //this will return to the parent activity (main activity)
             finish();
-        } else {
-            //If username/pass do not match, create a dialog to let them know
-            Context context = view.getContext();
-            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-            builder1.setMessage("Username is already taken");
-            builder1.setCancelable(true);
-            builder1.setPositiveButton(
-                    "OK",
-                    new DialogInterface.OnClickListener() {
-                        public void onClick(DialogInterface dialog, int id) {
-                            dialog.cancel();
-                        }
-                    });
-            AlertDialog alert11 = builder1.create();
-            alert11.show();
-        }
+
     }
 }
