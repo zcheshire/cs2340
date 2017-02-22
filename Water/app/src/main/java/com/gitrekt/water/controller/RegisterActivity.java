@@ -7,6 +7,7 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -19,8 +20,8 @@ import java.util.ArrayList;
 
 public class RegisterActivity extends AppCompatActivity {
     private Model model;
-    private UserType userType;
-    private Spinner selected;
+
+    private Spinner selectedType;
     private EditText emailRegisterField;
     private EditText passwordRegisterField;
     @Override
@@ -29,12 +30,18 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         //Get a reference to the model singleton
         model = Model.getInstance();
-        //Hardcoded values for the login, will be replaced
-        //model.setCurrentUser(new User(emailRegisterField.getText(), passwordRegisterField.getText()));
 
         //Get references to the view objects we interface with
         emailRegisterField = (EditText) findViewById(R.id.registerEmail);
         passwordRegisterField = (EditText) findViewById(R.id.registerPassword);
+        selectedType = (Spinner) findViewById(R.id.userTypeSpinner);
+
+        ArrayAdapter<UserType> userTypeAdapter =
+                new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, UserType.values());
+
+        userTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+
+        selectedType.setAdapter(userTypeAdapter);
     }
 
 
@@ -45,7 +52,10 @@ public class RegisterActivity extends AppCompatActivity {
 
     public void performRegister(View view) {
         //Create a new user from the username and password fields
-        User _user = new User(emailRegisterField.getText().toString(), passwordRegisterField.getText().toString(), userType);
+        User _user = new User(emailRegisterField.getText().toString(),
+                passwordRegisterField.getText().toString(),
+                (UserType) selectedType.getSelectedItem());
+
         ArrayList<User> uList = model.getUserList();
         for (User u: uList) {
             if (_user.getUserName().equals(u.getUserName())) {
@@ -81,6 +91,5 @@ public class RegisterActivity extends AppCompatActivity {
             //If they return from HomeActivity (Logout),
             //this will return to the parent activity (main activity)
             finish();
-
     }
 }
