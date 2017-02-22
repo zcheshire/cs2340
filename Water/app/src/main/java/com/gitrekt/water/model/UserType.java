@@ -8,7 +8,7 @@ public enum UserType {
     USER("User"),
     WORKER("Worker"),
     MANAGER("Manager"),
-    ADMIN("Admin")
+    ADMIN("Admin");
 
     private String name;
 

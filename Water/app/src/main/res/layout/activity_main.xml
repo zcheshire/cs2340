@@ -22,7 +22,8 @@
         android:layout_marginBottom="21dp"
         android:backgroundTint="@color/common_google_signin_btn_text_dark_focused"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="register" />
 
     <Button
         android:text="Login"

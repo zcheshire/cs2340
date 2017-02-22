@@ -30,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Get a reference to the model singleton
         model = Model.getInstance();
-        //Hardcoded values for the login, will be replaced
-        model.setCurrentUser(new User("xxx","yyy"));
 
         //Get references to the view objects we interface with
         emailField = (EditText) findViewById(R.id.loginEmail);
@@ -49,8 +47,11 @@ public class LoginActivity extends AppCompatActivity {
 
         //For now, it just compares to the values hardcoded in onCreate
         ArrayList<User> uList = model.getUserList();
-        for (User u: uList) {
+        boolean exists = false;
+
+        for (User u : uList) {
             if (_user.validate(u)) {
+                exists = true;
                 model.setCurrentUser(u);
 
                 //Move on to the Home Screen once logged in
@@ -62,19 +63,22 @@ public class LoginActivity extends AppCompatActivity {
                 finish();
             }
         }
-        //If username/pass do not match, create a dialog to let them know
-        Context context = view.getContext();
-        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-        builder1.setMessage("Username and password do not match");
-        builder1.setCancelable(true);
-        builder1.setPositiveButton(
-                "OK",
-                new DialogInterface.OnClickListener() {
+
+        if (!exists) {
+            //If username/pass do not match, create a dialog to let them know
+            Context context = view.getContext();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Username and password do not match");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
                         public void onClick(DialogInterface dialog, int id) {
                             dialog.cancel();
                         }
                     });
-        AlertDialog alert11 = builder1.create();
-        alert11.show();
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+        }
     }
 }

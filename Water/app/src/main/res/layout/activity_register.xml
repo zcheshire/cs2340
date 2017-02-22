@@ -59,19 +59,7 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="37dp"
         android:id="@+id/registerEmail"
-        android:text="email" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:text="password"
-        android:ems="10"
-        android:id="@+id/registerPassword"
-        android:layout_alignBaseline="@+id/textView4"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_alignLeft="@+id/registerEmail"
-        android:layout_alignStart="@+id/registerEmail" />
+        android:hint="Email" />
 
     <Button
         android:text="Register"
@@ -102,8 +90,20 @@
     <Spinner
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/registerPassword"
-        android:id="@+id/spinner"
-        android:layout_alignLeft="@+id/registerPassword"
-        android:layout_alignStart="@+id/registerPassword" />
+        android:id="@+id/userTypeSpinner"
+        android:layout_above="@+id/cancel"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginBottom="32dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPassword"
+        android:ems="10"
+        android:layout_alignTop="@+id/textView4"
+        android:layout_alignRight="@+id/registerEmail"
+        android:layout_alignEnd="@+id/registerEmail"
+        android:id="@+id/registerPassword"
+        android:hint="Password" />
 </RelativeLayout>

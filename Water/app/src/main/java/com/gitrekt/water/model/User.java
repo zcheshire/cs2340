@@ -24,14 +24,23 @@ public class User {
     }
 
     public String getUserName() {
-        return userName;
+        return this.userName;
     }
+
 
     public UserType getUserType() {
 
         return this.userType;
 
     }
+
+    public void setUserType(UserType userType) {
+
+        this.userType = userType;
+
+    }
+
+
 
     public void setUserName(String userName) {
         this.userName = userName;
