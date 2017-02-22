@@ -30,8 +30,6 @@ public class LoginActivity extends AppCompatActivity {
 
         //Get a reference to the model singleton
         model = Model.getInstance();
-        //Hardcoded values for the login, will be replaced
-        //model.setCurrentUser(new User("xxx", "yyy"));
 
         //Get references to the view objects we interface with
         emailField = (EditText) findViewById(R.id.loginEmail);
