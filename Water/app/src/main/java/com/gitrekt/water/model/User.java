@@ -7,41 +7,40 @@ package com.gitrekt.water.model;
 public class User {
     private String userName;
     private String passWord;
+    private UserType userType;
 
-    public User() {
-
-        userName = "";
-        passWord = "";
-
-    }
-
-    public User(String userName, String passWord) {
-
+    public User(String userName, String passWord, UserType userType) {
         this.userName = userName;
         this.passWord = passWord;
-
+        this.userType = userType;
     }
 
-    public void setUserName(String username){
-
-        this.userName = username;
-
+    public User() {
+        this(null, null, null);
     }
 
     public String getUserName() {
-
         return userName;
-
     }
-    public void setPassWord(String passWord){
 
-        this.passWord = passWord;
-
+    public String setUserName(String userName) {
+        this.userName = userName;
     }
 
     public String getPassWord() {
-
         return passWord;
+    }
 
+    public String setPassWord(String passWord) {
+        this.passWord = passWord;
+    }
+
+    public boolean validate(User user) {
+        if (this.getUserName().equals(user.getUserName())) {
+            if (this.getPassWord().equals(user.getPassWord())) {
+                return true;
+            }
+        }
+        return false;
     }
 }

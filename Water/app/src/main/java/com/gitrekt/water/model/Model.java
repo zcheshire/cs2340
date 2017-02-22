@@ -1,5 +1,6 @@
 package com.gitrekt.water.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -12,16 +13,25 @@ public class Model {
     public static Model getInstance() { return _instance; }
 
     private User currentUser;
+    private ArrayList<User> userList = new ArrayList<User>();
     
     public User getCurrentUser() {
-
-        return currentUser;
-
+        return this.currentUser;
     }
 
     public void setCurrentUser(User user) {
-
         this.currentUser = user;
+    }
 
+    public void addUser(User user) {
+        this.userList.add(user);
+    }
+
+    public void removeUser(User user) {
+        this.userList.remove(user);
+    }
+
+    public ArrayList<User> getUserList() {
+        return this.userList;
     }
 }
