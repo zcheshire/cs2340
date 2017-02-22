@@ -29,8 +29,6 @@ public class RegisterActivity extends AppCompatActivity {
         setContentView(R.layout.activity_register);
         //Get a reference to the model singleton
         model = Model.getInstance();
-        //Hardcoded values for the login, will be replaced
-        //model.setCurrentUser(new User(emailRegisterField.getText(), passwordRegisterField.getText()));
 
         //Get references to the view objects we interface with
         emailRegisterField = (EditText) findViewById(R.id.registerEmail);
@@ -50,7 +48,7 @@ public class RegisterActivity extends AppCompatActivity {
         for (User u: uList) {
             if (_user.getUserName().equals(u.getUserName())) {
 
-                //If username/pass do not match, create a dialog to let them know
+                //If username is taken, then notify user
                 Context context = view.getContext();
                 AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
                 builder1.setMessage("Username is already taken");
@@ -71,6 +69,7 @@ public class RegisterActivity extends AppCompatActivity {
 
 
         }
+        //If username does not already exist, then the user is added to User List
             model.addUser(_user);
             model.setCurrentUser(_user);
 
