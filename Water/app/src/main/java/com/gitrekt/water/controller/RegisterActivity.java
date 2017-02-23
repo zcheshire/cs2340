@@ -17,7 +17,12 @@ import com.gitrekt.water.model.User;
 import com.gitrekt.water.model.UserType;
 
 import java.util.ArrayList;
+/*
+Controller for the register activity
 
+
+
+ */
 public class RegisterActivity extends AppCompatActivity {
     private Model model;
 
@@ -44,12 +49,22 @@ public class RegisterActivity extends AppCompatActivity {
         selectedType.setAdapter(userTypeAdapter);
     }
 
+/*
+Takes the user to the previous scree
+@param view current view
 
+ */
     public void cancelRegister(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
+/*
 
+registers a new user if the username is not taken
+@param view current view
+
+
+ */
     public void performRegister(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailRegisterField.getText().toString(),

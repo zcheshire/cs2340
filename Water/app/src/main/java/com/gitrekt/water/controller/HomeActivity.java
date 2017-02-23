@@ -27,7 +27,7 @@ public class HomeActivity extends AppCompatActivity {
         loginMessage = (TextView) findViewById(R.id.loginMessage);
         logoutButton = (Button) findViewById(R.id.logoutButton);
 
-        loginMessage.setText("Welcome, " + model.getCurrentUser().getUserName() + "!");
+        loginMessage.setText("Welcome !");
     }
 
     //Overriding back so user can't return to login screen without logging out

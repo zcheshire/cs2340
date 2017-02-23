@@ -2,6 +2,7 @@ package com.gitrekt.water.model;
 
 /**
  * Created by John on 2/21/2017.
+ * Types of different users on the system
  */
 
 public enum UserType {
