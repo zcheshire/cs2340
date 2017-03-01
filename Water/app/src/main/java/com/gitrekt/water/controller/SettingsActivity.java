@@ -124,7 +124,7 @@ public class SettingsActivity extends AppCompatActivity {
         passwordField.setText(_user.getPassWord());
         model.addUser(_user);
         textView5.setText("Username Changed to " + _user.getUserName() + " and profile has been updated.");
-        System.out.print("Username Changed!");
+        //System.out.print("Username Changed!");
 
     }
 }
