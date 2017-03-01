@@ -10,7 +10,10 @@ import android.widget.Spinner;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
+import com.gitrekt.water.model.UserReport;
 import com.gitrekt.water.model.UserType;
+import com.gitrekt.water.model.WaterType;
+import com.gitrekt.water.model.ConditionType;
 
 import java.sql.BatchUpdateException;
 
@@ -32,27 +35,30 @@ public class ReportActivity extends AppCompatActivity {
         conditionSpinner = (Spinner) findViewById(R.id.conditionSpinner);
         locationField = (EditText) findViewById(R.id.locationField);
 
-        ArrayAdapter<UserType> waterTypeAdapter =
-                new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, WaterType.values());
+        ArrayAdapter<WaterType> waterTypeAdapter =
+                new ArrayAdapter<WaterType>(this, android.R.layout.simple_spinner_item, WaterType.values());
 
         waterTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         typeSpinner.setAdapter(waterTypeAdapter);
 
-        ArrayAdapter<UserType> waterConditionAdapter =
-                new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, WaterCondition.values());
+        ArrayAdapter<ConditionType> waterConditionAdapter =
+                new ArrayAdapter<ConditionType>(this, android.R.layout.simple_spinner_item, ConditionType.values());
 
         waterConditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         conditionSpinner.setAdapter(waterConditionAdapter);
     }
 
-    submitReport(View v) {
-        UserReport _report = new UserReport(locationField.getText(), typeSpinner.getSelectedItem(), conditionSpinner.getSelectedItem());
+    void submitReport(View v) {
+        UserReport _report = new UserReport(model.getCurrentUser(),
+                (WaterType) typeSpinner.getSelectedItem(),
+                (ConditionType) conditionSpinner.getSelectedItem(),
+                locationField.getText().toString());
         model.addUserReport(_report);
     }
 
-    cancelReport(View v) {
+    void cancelReport(View v) {
         finish();
     }
 }

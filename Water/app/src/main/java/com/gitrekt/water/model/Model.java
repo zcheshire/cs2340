@@ -14,6 +14,7 @@ public class Model {
 
     private User currentUser;
     private ArrayList<User> userList = new ArrayList<User>();
+    private ArrayList<UserReport> userReports = new ArrayList<UserReport>();
     
     public User getCurrentUser() {
         return this.currentUser;
@@ -33,5 +34,11 @@ public class Model {
 
     public ArrayList<User> getUserList() {
         return this.userList;
+    }
+
+    public void addUserReport(UserReport ur) { this.userReports.add(ur); }
+
+    public ArrayList<UserReport> getUserReports() {
+        return this.userReports;
     }
 }
