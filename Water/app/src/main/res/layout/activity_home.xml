@@ -19,16 +19,6 @@
         android:id="@+id/loginMessage" />
 
     <Button
-        android:text="Logout"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginMessage"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="58dp"
-        android:id="@+id/logoutButton"
-        android:onClick="logout" />
-
-    <Button
         android:text="Settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -37,4 +27,23 @@
         android:layout_alignParentEnd="true"
         android:id="@+id/settingsButton"
         android:onClick="settings" />
+
+    <Button
+        android:text="ADD REPORT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/reportButton"
+        android:onClick="createReport" />
+
+    <Button
+        android:text="Logout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/logoutButton"
+        android:onClick="logout"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>

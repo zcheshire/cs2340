@@ -16,6 +16,7 @@ public class HomeActivity extends AppCompatActivity {
 
     private TextView loginMessage;
     private Button logoutButton;
+    private Button reportButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +27,7 @@ public class HomeActivity extends AppCompatActivity {
 
         loginMessage = (TextView) findViewById(R.id.loginMessage);
         logoutButton = (Button) findViewById(R.id.logoutButton);
+        reportButton = (Button) findViewById(R.id.reportButton);
 
         loginMessage.setText("Welcome !");
     }
@@ -42,6 +44,10 @@ public class HomeActivity extends AppCompatActivity {
 
     public void settings(View view) {
         Intent intent = new Intent(this, SettingsActivity.class);
+        startActivity(intent);
+    }
+    public void createReport(View view) {
+        Intent intent = new Intent(this, ReportActivity.class);
         startActivity(intent);
     }
 }
