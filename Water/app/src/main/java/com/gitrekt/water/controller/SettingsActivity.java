@@ -50,7 +50,7 @@ public class SettingsActivity extends AppCompatActivity {
         emailField = (EditText) findViewById(R.id.editEmail);
         emailField.setText(model.getCurrentUser().getUserName());
         passwordField = (EditText) findViewById(R.id.editPassword);
-        passwordField.setText("*****");
+        passwordField.setText(model.getCurrentUser().getPassWord());
         textView5 = (TextView) findViewById(R.id.textView5);
         userTypeLabel = (TextView) findViewById(R.id.userTypeLabel);
         userTypeLabel.setText("User Type: " + model.getCurrentUser().getUserType());
