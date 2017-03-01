@@ -89,25 +89,27 @@ public class SettingsActivity extends AppCompatActivity {
 
 
             for (User u: uList) {
-                if (check.equals(u.getUserName())) {
+                if (u != _user) {
+                    if (check.equals(u.getUserName())) {
 
-                    //If username is taken, then notify user
-                    Context context = view.getContext();
-                    AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                    builder1.setMessage("Username is already taken");
-                    builder1.setCancelable(true);
-                    builder1.setPositiveButton(
-                            "OK",
-                            new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int id) {
-                                    dialog.cancel();
-                                }
-                            });
-                    AlertDialog alert11 = builder1.create();
-                    alert11.show();
-                    emailField.setText("");
-                    passwordField.setText("");
-                    return;
+                        //If username is taken, then notify user
+                        Context context = view.getContext();
+                        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+                        builder1.setMessage("Username is already taken");
+                        builder1.setCancelable(true);
+                        builder1.setPositiveButton(
+                                "OK",
+                                new DialogInterface.OnClickListener() {
+                                    public void onClick(DialogInterface dialog, int id) {
+                                        dialog.cancel();
+                                    }
+                                });
+                        AlertDialog alert11 = builder1.create();
+                        alert11.show();
+                        emailField.setText("");
+                        passwordField.setText("");
+                        return;
+                    }
                 }
 
 
