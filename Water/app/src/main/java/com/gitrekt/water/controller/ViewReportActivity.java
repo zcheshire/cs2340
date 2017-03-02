@@ -2,6 +2,7 @@ package com.gitrekt.water.controller;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
@@ -15,6 +16,8 @@ public class ViewReportActivity extends AppCompatActivity {
     private TextView type;
     private TextView condition;
     private TextView location;
+    private TextView postID;
+
     private Model model;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -25,11 +28,14 @@ public class ViewReportActivity extends AppCompatActivity {
         condition = (TextView) findViewById(R.id.condition);
         type = (TextView) findViewById(R.id.type);
         location = (TextView) findViewById(R.id.location);
+        postID = (TextView) findViewById(R.id.postID);
 
         user.setText(model.getUserReports().get(0).getUser().getUserName());
         condition.setText(model.getUserReports().get(0).getCondition().toString());
         type.setText(model.getUserReports().get(0).getType().toString());
         location.setText(model.getUserReports().get(0).getLocation().toString());
+        postID.setText(model.getUserReports().get(0).getReportNumber());
+
 
     }
 }
