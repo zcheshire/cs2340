@@ -1,5 +1,6 @@
 package com.gitrekt.water.controller;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -56,6 +57,8 @@ public class ReportActivity extends AppCompatActivity {
                 (ConditionType) conditionSpinner.getSelectedItem(),
                 locationField.getText().toString());
         model.addUserReport(_report);
+        Intent intent = new Intent(this, ViewReportActivity.class);
+        startActivity(intent);
     }
 
     void cancelReport(View v) {
