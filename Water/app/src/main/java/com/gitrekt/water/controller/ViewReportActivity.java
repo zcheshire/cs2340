@@ -19,6 +19,7 @@ public class ViewReportActivity extends AppCompatActivity {
     private TextView postID;
 
     private Model model;
+    //set content for the view
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

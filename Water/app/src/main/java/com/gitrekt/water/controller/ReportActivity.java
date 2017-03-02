@@ -50,7 +50,7 @@ public class ReportActivity extends AppCompatActivity {
 
         conditionSpinner.setAdapter(waterConditionAdapter);
     }
-
+//send the report data to the model
     void submitReport(View v) {
         UserReport _report = new UserReport(model.getCurrentUser(),
                 (WaterType) typeSpinner.getSelectedItem(),

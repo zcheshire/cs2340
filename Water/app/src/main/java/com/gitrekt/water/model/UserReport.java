@@ -21,25 +21,30 @@ public class UserReport {
 
 
     }
+    //Gets user that made the report
     public User getUser () {
 
         return this.user;
 
     }
+    //Auto generates a report ID
     public String getReportNumber () {
         return "" + reportNumber;
 
     }
+    //Gets type of water
     public WaterType getType () {
 
         return this.waterType;
 
     }
+    //Gets Condition of the water
     public ConditionType getCondition () {
 
         return this.conditionType;
 
     }
+    //Gets location of the water that was reported
     public String getLocation () {
 
         return this.location;
