@@ -3,7 +3,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:stretchColumns="1">
-
+// Makes table rows with text views in each row
+    // 
     <TableRow>
         <TextView
             android:layout_column="1"
