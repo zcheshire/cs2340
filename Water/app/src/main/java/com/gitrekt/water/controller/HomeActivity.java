@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
+import android.widget.ListView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
@@ -17,6 +18,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView loginMessage;
     private Button logoutButton;
     private Button reportButton;
+    private ListView lv;
+    private WaterReportAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -28,8 +31,23 @@ public class HomeActivity extends AppCompatActivity {
         loginMessage = (TextView) findViewById(R.id.loginMessage);
         logoutButton = (Button) findViewById(R.id.logoutButton);
         reportButton = (Button) findViewById(R.id.reportButton);
+        lv = (ListView) findViewById(R.id.reportListView);
 
         loginMessage.setText("Welcome !");
+    }
+
+    protected void onResume() {
+        super.onRestart();
+
+        adapter = new WaterReportAdapter(getApplicationContext(), model.getUserReports());
+        lv.setAdapter(adapter);
+
+    }
+
+    protected void onPause() {
+        super.onPause();
+
+        loginMessage.setText("");
     }
 
     //Overriding back so user can't return to login screen without logging out

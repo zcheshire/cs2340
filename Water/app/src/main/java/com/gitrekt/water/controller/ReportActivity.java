@@ -57,8 +57,9 @@ public class ReportActivity extends AppCompatActivity {
                 (ConditionType) conditionSpinner.getSelectedItem(),
                 locationField.getText().toString());
         model.addUserReport(_report);
-        Intent intent = new Intent(this, ViewReportActivity.class);
-        startActivity(intent);
+        //Intent intent = new Intent(this, ViewReportActivity.class);
+        //startActivity(intent);
+        finish();
     }
 
     void cancelReport(View v) {

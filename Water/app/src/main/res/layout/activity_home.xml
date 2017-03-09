@@ -10,14 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gitrekt.water.controller.HomeActivity">
 
-    <TextView
-        android:text="Login Successful!"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/loginMessage" />
-
     <Button
         android:text="Settings"
         android:layout_width="wrap_content"
@@ -46,4 +38,21 @@
         android:onClick="logout"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true" />
+
+    <TextView
+        android:text="Login Successful!"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/loginMessage"
+        android:layout_above="@+id/logoutButton"
+        android:layout_centerHorizontal="true" />
+
+    <ListView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_above="@+id/loginMessage"
+        android:layout_below="@+id/settingsButton"
+        android:id="@+id/reportListView" />
 </RelativeLayout>
