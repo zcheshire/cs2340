@@ -24,6 +24,8 @@ public class ReportActivity extends AppCompatActivity {
     private Spinner typeSpinner;
     private Spinner conditionSpinner;
     private EditText locationField;
+    private EditText longitudeField;
+    private EditText latitudeField;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,6 +37,8 @@ public class ReportActivity extends AppCompatActivity {
         typeSpinner = (Spinner) findViewById(R.id.typeSpinner);
         conditionSpinner = (Spinner) findViewById(R.id.conditionSpinner);
         locationField = (EditText) findViewById(R.id.locationField);
+        longitudeField = (EditText) findViewById(R.id.longitudeField);
+        latitudeField = (EditText) findViewById(R.id.latitudeField);
 
         ArrayAdapter<WaterType> waterTypeAdapter =
                 new ArrayAdapter<WaterType>(this, android.R.layout.simple_spinner_item, WaterType.values());
@@ -55,7 +59,7 @@ public class ReportActivity extends AppCompatActivity {
         UserReport _report = new UserReport(model.getCurrentUser(),
                 (WaterType) typeSpinner.getSelectedItem(),
                 (ConditionType) conditionSpinner.getSelectedItem(),
-                locationField.getText().toString());
+                locationField.getText().toString(), longitudeField.getText().toString(), latitudeField.getText().toString());
         model.addUserReport(_report);
         //Intent intent = new Intent(this, ViewReportActivity.class);
         //startActivity(intent);

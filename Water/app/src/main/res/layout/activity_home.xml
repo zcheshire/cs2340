@@ -55,4 +55,5 @@
         android:layout_above="@+id/loginMessage"
         android:layout_below="@+id/settingsButton"
         android:id="@+id/reportListView" />
+
 </RelativeLayout>

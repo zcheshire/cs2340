@@ -8,6 +8,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ListView;
 
+import com.gitrekt.water.MapsActivity;
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 
@@ -60,7 +61,9 @@ public class HomeActivity extends AppCompatActivity {
         super.onBackPressed();
     }
 
+
     public void settings(View view) {
+        //Change back to SettingsActivity from MapsActivity
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
     }

@@ -11,12 +11,16 @@ public class UserReport {
     WaterType waterType;
     ConditionType conditionType;
     String location;
+    String longitude;
+    String latitude;
     static int reportNumber;
-    public UserReport (User user, WaterType waterType,ConditionType conditionType, String location) {
+    public UserReport (User user, WaterType waterType,ConditionType conditionType, String location, String longitude, String latitude) {
         this.user = user;
         this.waterType = waterType;
         this.conditionType = conditionType;
         this.location = location;
+        this.longitude = longitude;
+        this.latitude = latitude;
         this.reportNumber = reportNumber + 1;
 
 
@@ -49,6 +53,14 @@ public class UserReport {
 
         return this.location;
 
+    }
+    public String getLongitude () {
+
+        return this.longitude;
+    }
+    public String getLatitude () {
+
+        return this.latitude;
     }
 
 }
