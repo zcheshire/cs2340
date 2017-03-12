@@ -1,8 +1,9 @@
-package com.gitrekt.water;
+package com.gitrekt.water.controller;
 
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
+import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.UserReport;
 import com.google.android.gms.maps.CameraUpdateFactory;

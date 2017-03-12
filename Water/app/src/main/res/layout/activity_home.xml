@@ -56,4 +56,14 @@
         android:layout_below="@+id/settingsButton"
         android:id="@+id/reportListView" />
 
+    <Button
+        android:text="Map"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/loginMessage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/mapButton"
+        android:onClick="viewMap" />
+
 </RelativeLayout>

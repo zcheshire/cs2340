@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.ListView;
 
-import com.gitrekt.water.MapsActivity;
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 
@@ -69,6 +68,11 @@ public class HomeActivity extends AppCompatActivity {
     }
     public void createReport(View view) {
         Intent intent = new Intent(this, ReportActivity.class);
+        startActivity(intent);
+    }
+
+    public void viewMap(View view) {
+        Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
     }
 }
