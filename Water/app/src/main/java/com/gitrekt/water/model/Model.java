@@ -15,6 +15,7 @@ public class Model {
     private User currentUser;
     private ArrayList<User> userList = new ArrayList<User>();
     private ArrayList<UserReport> userReports = new ArrayList<UserReport>();
+    private ArrayList<QualityReport> qualityReports = new ArrayList<QualityReport>();
     
     public User getCurrentUser() {
         return this.currentUser;
@@ -37,8 +38,12 @@ public class Model {
     }
 
     public void addUserReport(UserReport ur) { this.userReports.add(ur); }
+    public void addQualityReport(QualityReport qr) { this.qualityReports.add(qr); }
 
     public ArrayList<UserReport> getUserReports() {
         return this.userReports;
+    }
+    public ArrayList<QualityReport> getQualityReports() {
+        return this.qualityReports;
     }
 }

@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:stretchColumns="1">
+    // Makes table rows with text views in each row
+    //
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="User:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/user" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Water Condition:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/condition" />
+    </TableRow>
+
+    <TableRow>
+        <TextView
+            android:layout_column="1"
+            android:text="Location:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/location" />
+    </TableRow>
+
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Virus PPM:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/virus" />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="Contaminant PPM:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/contaminant" />
+    </TableRow>
+    <TableRow>
+
+        <TextView
+            android:layout_column="1"
+            android:text="ID:"
+            android:padding="3dip" />
+        <TextView
+            android:gravity="right"
+            android:padding="3dip"
+            android:id="@+id/postID" />
+    </TableRow>
+</TableLayout>
