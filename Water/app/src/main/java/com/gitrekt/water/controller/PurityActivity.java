@@ -24,7 +24,8 @@ import com.gitrekt.water.model.OverallCondition;
 import java.sql.BatchUpdateException;
 
 import com.gitrekt.water.R;
-
+//Controller for Activity_Purity.XML file
+//This is where users create purity report
 public class PurityActivity extends AppCompatActivity {
     private Model model;
     private Spinner conditionSpinner;
@@ -72,7 +73,7 @@ public class PurityActivity extends AppCompatActivity {
         //startActivity(intent);
         finish();
     }
-    void cancelReport(View v) {
+    void cancel(View v) {
         finish();
     }
 }

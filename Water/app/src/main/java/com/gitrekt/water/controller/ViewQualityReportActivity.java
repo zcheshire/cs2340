@@ -32,4 +32,9 @@ public class ViewQualityReportActivity extends AppCompatActivity {
         lv.setAdapter(adapter);
 
     }
+    public void cancel (View view) {
+
+        this.onBackPressed();
+
+    }
 }

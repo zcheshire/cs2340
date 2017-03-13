@@ -14,7 +14,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -57,10 +60,12 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
         }
         for (QualityReport qreport: qpList) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             double longitude = Double.parseDouble(qreport.getLongitude());
             double latitude = Double.parseDouble(qreport.getLatitude());
             LatLng point = new LatLng(longitude, latitude);
-            mMap.addMarker(new MarkerOptions().position(point).title(qreport.getUser().getUserName() + qreport.getDate().toString()));
+            String tmp = df.format(qreport.getDate().getTime());
+            mMap.addMarker(new MarkerOptions().position(point).title("Condition: " + qreport.getCondition().toString() + " " + tmp));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
         }
     }
