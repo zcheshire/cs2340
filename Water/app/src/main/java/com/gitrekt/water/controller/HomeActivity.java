@@ -18,6 +18,8 @@ public class HomeActivity extends AppCompatActivity {
     private TextView loginMessage;
     private Button logoutButton;
     private Button reportButton;
+    private Button addQuality;
+    private Button viewQualityReport;
     private ListView lv;
     private WaterReportAdapter adapter;
 
@@ -31,6 +33,8 @@ public class HomeActivity extends AppCompatActivity {
         loginMessage = (TextView) findViewById(R.id.loginMessage);
         logoutButton = (Button) findViewById(R.id.logoutButton);
         reportButton = (Button) findViewById(R.id.reportButton);
+        addQuality = (Button) findViewById(R.id.addQuality);
+        viewQualityReport = (Button) findViewById(R.id.viewQualityReport);
         lv = (ListView) findViewById(R.id.reportListView);
 
         loginMessage.setText("Welcome !");
@@ -74,5 +78,32 @@ public class HomeActivity extends AppCompatActivity {
     public void viewMap(View view) {
         Intent intent = new Intent(this, MapsActivity.class);
         startActivity(intent);
+    }
+
+    public void viewQualityReport(View view) {
+        if (model.getCurrentUser().getUserType().toString() == "Worker" ||model.getCurrentUser().getUserType().toString() == "Manager") {
+
+            Intent intent = new Intent(this, PurityActivity.class);
+            startActivity(intent);
+
+        } else {
+
+            loginMessage.setText("Only Managers and Workers can create Purity Reports");
+        }
+
+
+    }
+    public void viewQualityReports(View view) {
+        if (model.getCurrentUser().getUserType().toString() == "Manager") {
+
+            Intent intent = new Intent(this, ViewQualityReportActivity.class);
+            startActivity(intent);
+
+        } else {
+
+            loginMessage.setText("Only Managers can view Purity Reports");
+        }
+
+
     }
 }

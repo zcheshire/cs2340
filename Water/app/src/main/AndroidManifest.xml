@@ -42,7 +42,13 @@
 
         <activity
             android:name=".controller.MapsActivity"
-            android:label="@string/title_activity_maps"></activity>
+            android:label="@string/title_activity_maps" />
+        <activity android:name=".controller.PurityActivity" />
+        <activity android:name=".controller.ViewQualityReportActivity" />
+        <activity
+            android:name=".controller.ViewQP"
+            android:label="@string/title_activity_view_qp"
+            android:theme="@style/AppTheme"></activity>
     </application>
 
 </manifest>

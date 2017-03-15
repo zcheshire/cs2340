@@ -6,6 +6,7 @@ import android.os.Bundle;
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.UserReport;
+import com.gitrekt.water.model.QualityReport;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -13,7 +14,10 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
+import java.util.Calendar;
 
 public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
 
@@ -46,12 +50,22 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
         ArrayList<UserReport> list = model.getUserReports();
+        ArrayList<QualityReport> qpList = model.getQualityReports();
         //Loops through reports and adds them to the mapView
         for (UserReport report: list) {
             double longitude = Double.parseDouble(report.getLongitude());
             double latitude = Double.parseDouble(report.getLatitude());
             LatLng point = new LatLng(longitude, latitude);
-            mMap.addMarker(new MarkerOptions().position(point).title(report.getLocation()));
+            mMap.addMarker(new MarkerOptions().position(point).title(report.getType().toString() + report.getCondition()));
+            mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+        }
+        for (QualityReport qreport: qpList) {
+            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+            double longitude = Double.parseDouble(qreport.getLongitude());
+            double latitude = Double.parseDouble(qreport.getLatitude());
+            LatLng point = new LatLng(longitude, latitude);
+            String tmp = df.format(qreport.getDate().getTime());
+            mMap.addMarker(new MarkerOptions().position(point).title("Condition: " + qreport.getCondition().toString() + " " + tmp));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
         }
     }
