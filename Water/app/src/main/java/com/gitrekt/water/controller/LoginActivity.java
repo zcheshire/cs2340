@@ -4,6 +4,7 @@ import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,6 +14,7 @@ import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.User;
 import com.gitrekt.water.model.UserType;
+import com.gitrekt.water.model.WaterType;
 
 import java.util.ArrayList;
 

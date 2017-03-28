@@ -49,6 +49,11 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
     @Override
     public void onMapReady(GoogleMap googleMap) {
         mMap = googleMap;
+        /*
+        Loops through the water reports and attaches them to maps
+
+
+         */
         ArrayList<UserReport> list = model.getUserReports();
         ArrayList<QualityReport> qpList = model.getQualityReports();
         //Loops through reports and adds them to the mapView
@@ -59,7 +64,7 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             mMap.addMarker(new MarkerOptions().position(point).title(report.getType().toString() + report.getCondition()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
         }
-        for (QualityReport qreport: qpList) {
+        /*for (QualityReport qreport: qpList) {
             DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
             double longitude = Double.parseDouble(qreport.getLongitude());
             double latitude = Double.parseDouble(qreport.getLatitude());
@@ -67,6 +72,6 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             String tmp = df.format(qreport.getDate().getTime());
             mMap.addMarker(new MarkerOptions().position(point).title("Condition: " + qreport.getCondition().toString() + " " + tmp));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
-        }
+        }*/
     }
 }

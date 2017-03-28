@@ -1,5 +1,10 @@
 package com.gitrekt.water.model;
 
+import android.content.ContentValues;
+import android.content.Context;
+import android.database.sqlite.SQLiteDatabase;
+import android.database.sqlite.SQLiteOpenHelper;
+
 /**
  * Created by zacharycheshire on 3/1/17.
  */

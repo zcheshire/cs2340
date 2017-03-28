@@ -1,9 +1,12 @@
 package com.gitrekt.water.controller;
 
 import android.app.AlertDialog;
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -15,8 +18,11 @@ import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.User;
 import com.gitrekt.water.model.UserType;
-
 import java.util.ArrayList;
+import java.util.List;
+
+import com.gitrekt.water.model.UserReaderContract;
+import com.gitrekt.water.model.UserReaderDbHelper;
 /*
 Controller for the register activity
 
@@ -29,12 +35,15 @@ public class RegisterActivity extends AppCompatActivity {
     private Spinner selectedType;
     private EditText emailRegisterField;
     private EditText passwordRegisterField;
+    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_register);
         //Get a reference to the model singleton
         model = Model.getInstance();
+
+
 
         //Get references to the view objects we interface with
         emailRegisterField = (EditText) findViewById(R.id.registerEmail);
@@ -71,9 +80,45 @@ registers a new user if the username is not taken
                 passwordRegisterField.getText().toString(),
                 (UserType) selectedType.getSelectedItem());
 
-        ArrayList<User> uList = model.getUserList();
-        for (User u: uList) {
-            if (_user.getUserName().equals(u.getUserName())) {
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+// Define a projection that specifies which columns from the database
+// you will actually use after this query.
+        String[] projection = {
+                UserReaderContract.FeedEntry._ID,
+                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME,
+                UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD
+        };
+
+// Filter results WHERE "username" is anything
+        String selection = UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " = ?";
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " DESC";
+//Query the db using a cursor
+        Cursor cursor = db.query(
+                UserReaderContract.FeedEntry.TABLE_NAME,  // The table to query
+                projection,                               // The columns to return
+                null,//"",//selection,                    // The columns for the WHERE clause
+                null,//selectionArgs,                     // The values for the WHERE clause
+                null,                                     // don't group the rows
+                null,                                     // don't filter by row groups
+                sortOrder                                 // The sort order
+        );
+        List<String> itemIds = new ArrayList<>();
+        //Grabs usernames from the db and add them to the itemIDS arrayList
+        while (cursor.moveToNext()) {
+            String itemId = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME));
+
+            itemIds.add(itemId);
+        }
+        cursor.close();
+        //Loops to see if the username is already in the db
+        for (String u : itemIds) {
+            if (_user.getUserName().equals(u.toString())) {
+                System.out.print(u.toString());
+
 
                 //If username is taken, then notify user
                 Context context = view.getContext();
@@ -93,19 +138,29 @@ registers a new user if the username is not taken
                 passwordRegisterField.setText("");
                 return;
             }
-
-
         }
+
         //If username does not already exist, then the user is added to User List
-            model.addUser(_user);
-            model.setCurrentUser(_user);
+       
+        // Gets the data repository in write mode
+        SQLiteDatabase data = mDbHelper.getWritableDatabase();
 
-            //Move on to the Home Screen once logged in
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, emailRegisterField.getText().toString());
 
-            //If they return from HomeActivity (Logout),
-            //this will return to the parent activity (main activity)
-            finish();
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, passwordRegisterField.getText().toString());
+
+// Insert the new row, returning the primary key value of the new row
+        long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
+        //Move on to the Home Screen once logged in
+        Intent intent = new Intent(this, HomeActivity.class);
+        startActivity(intent);
+
+        //If they return from HomeActivity (Logout),
+        //this will return to the parent activity (main activity)
+        finish();
+
+
     }
 }
