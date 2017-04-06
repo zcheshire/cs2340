@@ -1,11 +1,9 @@
 package com.gitrekt.water.controller;
-import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -15,18 +13,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
-import com.gitrekt.water.R;
-import com.gitrekt.water.model.ConditionType;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.QualityReport;
 //import com.gitrekt.water.model.UserReport;
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
-import com.gitrekt.water.model.UserType;
 //import com.gitrekt.water.model.WaterType;
 import com.gitrekt.water.model.OverallCondition;
-
-import java.sql.BatchUpdateException;
 
 import com.gitrekt.water.R;
 //Controller for Activity_Purity.XML file
@@ -39,8 +32,7 @@ public class PurityActivity extends AppCompatActivity {
     private EditText latitudeField;
     private EditText virusField;
     private EditText contaminantField;
-    private Button submitReport;
-    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+    private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -53,10 +45,10 @@ public class PurityActivity extends AppCompatActivity {
         latitudeField = (EditText) findViewById(R.id.latitudeField);
         virusField = (EditText) findViewById(R.id.virusField);
         contaminantField = (EditText) findViewById(R.id.contaminantField);
-        submitReport = (Button) findViewById(R.id.submitReport);
+        Button submitReport = (Button) findViewById(R.id.submitReport);
 
         ArrayAdapter<OverallCondition> waterConditionAdapter =
-                new ArrayAdapter<OverallCondition>(this, android.R.layout.simple_spinner_item, OverallCondition.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, OverallCondition.values());
 
         waterConditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
@@ -64,6 +56,11 @@ public class PurityActivity extends AppCompatActivity {
 
     }
 
+    /**
+     * Button that a user presses to submit a report once prompted to fill
+     * in information needed for a user report
+     * @param v
+     */
     public void submitReport(View v) {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Calendar calobj = Calendar.getInstance();
@@ -79,8 +76,8 @@ public class PurityActivity extends AppCompatActivity {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, virusField.getText().toString());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_CPPM, contaminantField.getText().toString());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, conditionSpinner.getSelectedItem().toString());
@@ -97,6 +94,11 @@ public class PurityActivity extends AppCompatActivity {
         //startActivity(intent);
         finish();
     }
+
+    /**
+     * Button that cancels the submission process
+     * @param v
+     */
     void cancel(View v) {
         finish();
     }

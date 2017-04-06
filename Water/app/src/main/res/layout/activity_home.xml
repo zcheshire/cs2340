@@ -11,7 +11,7 @@
     tools:context="com.gitrekt.water.controller.HomeActivity">
 
     <Button
-        android:text="Settings"
+        android:text="@string/settings"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -21,7 +21,7 @@
         android:onClick="settings" />
 
     <Button
-        android:text="ADD REPORT"
+        android:text="@string/add_report"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -31,7 +31,7 @@
         android:onClick="createReport" />
 
     <Button
-        android:text="Logout"
+        android:text="@string/logout"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/logoutButton"
@@ -40,7 +40,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="Login Successful!"
+        android:text="@string/login_successful"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/loginMessage"
@@ -57,7 +57,7 @@
         android:id="@+id/reportListView" />
 
     <Button
-        android:text="Map"
+        android:text="@string/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginMessage"
@@ -67,7 +67,7 @@
         android:onClick="viewMap" />
 
     <Button
-        android:text="Add QP"
+        android:text="@string/add_qp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/loginMessage"
@@ -77,7 +77,7 @@
         android:onClick="viewQualityReport"/>
 
     <Button
-        android:text="Button"
+        android:text="@string/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button3"
@@ -86,7 +86,7 @@
         android:layout_toStartOf="@+id/settingsButton" />
 
     <Button
-        android:text="View QP"
+        android:text="@string/view_qp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/viewQualityReport"

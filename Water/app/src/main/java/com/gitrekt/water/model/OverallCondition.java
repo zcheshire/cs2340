@@ -13,7 +13,7 @@ public enum OverallCondition {
     UNSAFE("Unsafe");
 
 
-    private String name;
+    private final String name;
 
     OverallCondition(String name) {
         this.name = name;

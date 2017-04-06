@@ -11,7 +11,7 @@
     tools:context="com.gitrekt.water.controller.RegisterActivity">
 
     <TextView
-        android:text="Please Fill Out Your Desired Information"
+        android:text="@string/please_fill_out_your_desired_information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -24,7 +24,7 @@
         android:textAlignment="center" />
 
     <TextView
-        android:text="Email:"
+        android:text="@string/email"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginLeft="30dp"
@@ -36,7 +36,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Password:"
+        android:text="@string/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
@@ -59,10 +59,10 @@
         android:layout_marginStart="16dp"
         android:layout_marginBottom="37dp"
         android:id="@+id/registerEmail"
-        android:hint="Email" />
+        android:hint="@string/email1" />
 
     <Button
-        android:text="Register"
+        android:text="@string/register2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="101dp"
@@ -75,7 +75,7 @@
         android:layout_alignEnd="@+id/registerPassword" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/cancel"
@@ -105,5 +105,5 @@
         android:layout_alignRight="@+id/registerEmail"
         android:layout_alignEnd="@+id/registerEmail"
         android:id="@+id/registerPassword"
-        android:hint="Password" />
+        android:hint="@string/password2" />
 </RelativeLayout>

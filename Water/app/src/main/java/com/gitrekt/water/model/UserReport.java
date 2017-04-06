@@ -1,22 +1,20 @@
 package com.gitrekt.water.model;
 
-import java.net.Inet4Address;
-
 /**
  * Created by zacharycheshire on 3/1/17.
  */
 
 public class UserReport {
-    User user;
-    WaterType waterType;
-    ConditionType conditionType;
-    String location;
-    String longitude;
-    String latitude;
-    static int reportNumber;
-    String userr;
-    String waterTypee;
-    String conditionTypee;
+    private User user;
+    private WaterType waterType;
+    private ConditionType conditionType;
+    private final String location;
+    private final String longitude;
+    private final String latitude;
+    private static int reportNumber;
+    private String userr;
+    private String waterTypee;
+    private String conditionTypee;
 
     /**
      * Creates a user report object
@@ -34,7 +32,7 @@ public class UserReport {
         this.location = location;
         this.longitude = longitude;
         this.latitude = latitude;
-        this.reportNumber = reportNumber + 1;
+        reportNumber = reportNumber + 1;
 
 
     }

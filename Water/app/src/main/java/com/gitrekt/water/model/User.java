@@ -8,7 +8,6 @@ public class User {
     private String userName;
     private String passWord;
     private UserType userType;
-    private String userTypee;
 
 
     /**
@@ -31,7 +30,6 @@ public class User {
     public User(String userName, String passWord, String userType) {
         this.userName = userName;
         this.passWord = passWord;
-        this.userTypee = userType;
     }
 
     /**

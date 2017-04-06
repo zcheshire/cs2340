@@ -49,7 +49,7 @@
             android:name=".controller.ViewQP"
             android:label="@string/title_activity_view_qp"
             android:theme="@style/AppTheme" />
-        <activity android:name=".controller.WaterReportHistory"></activity>
+        <activity android:name=".controller.WaterReportHistory" />
     </application>
 
 </manifest>

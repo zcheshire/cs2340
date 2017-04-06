@@ -7,18 +7,18 @@ import java.util.Calendar;
  */
 
 public class QualityReport {
-    User user;
+    private User user;
    public String userr;
-    OverallCondition overallCondition;
-    String location;
+    private OverallCondition overallCondition;
+    private final String location;
    public String overallConditionn;
-    String longitude;
-    String latitude;
-    Calendar date;
+    private final String longitude;
+    private final String latitude;
+    private Calendar date;
     //double time;
-    String virusPPM;
-    String contaminantPPM;
-    static int reportNumber;
+    private final String virusPPM;
+    private final String contaminantPPM;
+    private static int reportNumber;
 
     /**
      * Generates a quality report object
@@ -42,7 +42,7 @@ public class QualityReport {
         //this.time = time;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
-        this.reportNumber = reportNumber + 1;
+        reportNumber = reportNumber + 1;
     }
 
     /**
@@ -59,7 +59,7 @@ public class QualityReport {
         //this.time = time;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
-        this.reportNumber = reportNumber + 1;
+        reportNumber = reportNumber + 1;
     }
 
     /**

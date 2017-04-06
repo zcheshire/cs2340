@@ -16,19 +16,14 @@ import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.User;
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
-import com.gitrekt.water.model.UserType;
-import com.gitrekt.water.model.WaterType;
 
 import java.util.ArrayList;
-import java.util.List;
 
 public class LoginActivity <T> extends AppCompatActivity {
 
-    private Model model;
-
     private EditText emailField;
     private EditText passwordField;
-    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+    private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,18 +31,27 @@ public class LoginActivity <T> extends AppCompatActivity {
         setContentView(R.layout.activity_login);
 
         //Get a reference to the model singleton
-        model = Model.getInstance();
+        Model model = Model.getInstance();
 
         //Get references to the view objects we interface with
         emailField = (EditText) findViewById(R.id.loginEmail);
         passwordField = (EditText) findViewById(R.id.loginPassword);
     }
 
+    /**
+     * Button that allows a user to cancel their login attempt
+     * @param view
+     */
     public void cancelLogin(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
 
+    /**
+     * Button that checks the above fields for proper username and password
+     * and allows a user to login if the information is correct
+     * @param view
+     */
     public void performLogin(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
@@ -123,6 +127,14 @@ public class LoginActivity <T> extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Validates if the information the user is entering matches
+     * data within the database
+     * @param itemIds
+     * @param newUser
+     * @return boolean
+     */
     public boolean validateLogin (ArrayList<User> itemIds, User newUser) {
 
         for (User u : itemIds) {

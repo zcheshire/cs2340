@@ -1,7 +1,6 @@
 package com.gitrekt.water.model;
 
 import java.util.ArrayList;
-import java.util.List;
 
 /**
  * Created by zacharycheshire on 2/14/17.
@@ -13,9 +12,9 @@ public class Model {
     public static Model getInstance() { return _instance; }
 
     private User currentUser;
-    private ArrayList<User> userList = new ArrayList<User>();
-    private ArrayList<UserReport> userReports = new ArrayList<UserReport>();
-    private ArrayList<QualityReport> qualityReports = new ArrayList<QualityReport>();
+    private final ArrayList<User> userList = new ArrayList<>();
+    private ArrayList<UserReport> userReports = new ArrayList<>();
+    private final ArrayList<QualityReport> qualityReports = new ArrayList<>();
 
     /**
      * Returns current user

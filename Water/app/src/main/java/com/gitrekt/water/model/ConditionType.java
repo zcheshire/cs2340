@@ -13,7 +13,7 @@ public enum ConditionType {
     TREATABLECLEAR("Treatable-Clear"),
     TREATABLEMUDDY("Treatable-Muddy"),
     POTABLE("Potable");
-    private String name;
+    private final String name;
 
     ConditionType(String name) {
         this.name = name;
