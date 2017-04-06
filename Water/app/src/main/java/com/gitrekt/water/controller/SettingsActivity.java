@@ -26,7 +26,7 @@ Controller for the setting activity
 
 
  */
-public class SettingsActivity extends AppCompatActivity {
+public class SettingsActivity <T> extends AppCompatActivity {
 
     private Model model;
     private TextView textView5;
@@ -86,45 +86,52 @@ public class SettingsActivity extends AppCompatActivity {
 
         String pass = passwordField.getText().toString();
         String check = emailField.getText().toString();
+        if (!changeName(check,_user, uList)) {
+
+            //If username is taken, then notify user
+            Context context = view.getContext();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Username is already taken");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            emailField.setText("");
+            passwordField.setText("");
+            return;
+
+        } else {
 
 
-            for (User u: uList) {
-                if (u != _user) {
-                    if (check.equals(u.getUserName())) {
+            model.removeUser(_user);
 
-                        //If username is taken, then notify user
-                        Context context = view.getContext();
-                        AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                        builder1.setMessage("Username is already taken");
-                        builder1.setCancelable(true);
-                        builder1.setPositiveButton(
-                                "OK",
-                                new DialogInterface.OnClickListener() {
-                                    public void onClick(DialogInterface dialog, int id) {
-                                        dialog.cancel();
-                                    }
-                                });
-                        AlertDialog alert11 = builder1.create();
-                        alert11.show();
-                        emailField.setText("");
-                        passwordField.setText("");
-                        return;
-                    }
+            _user = new User(check, pass, model.getCurrentUser().getUserType());
+            model.setCurrentUser(_user);
+            emailField.setText(_user.getUserName());
+            passwordField.setText(_user.getPassWord());
+            model.addUser(_user);
+            textView5.setText("Username Changed to " + _user.getUserName() + " and profile has been updated.");
+            //System.out.print("Username Changed!");
+        }
+
+    }
+    public boolean changeName (String check, User _user, ArrayList<User> uList) {
+        for (User u : uList) {
+            if (u != _user) {
+                if (check.equals(u.getUserName())) {
+
+                  return false;
                 }
-
-
             }
 
 
-        model.removeUser(_user);
-
-        _user = new User(check, pass, model.getCurrentUser().getUserType());
-        model.setCurrentUser(_user);
-        emailField.setText(_user.getUserName());
-        passwordField.setText(_user.getPassWord());
-        model.addUser(_user);
-        textView5.setText("Username Changed to " + _user.getUserName() + " and profile has been updated.");
-        //System.out.print("Username Changed!");
-
+        }
+        return true;
     }
 }

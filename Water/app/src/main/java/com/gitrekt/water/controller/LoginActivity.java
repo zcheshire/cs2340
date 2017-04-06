@@ -22,7 +22,7 @@ import com.gitrekt.water.model.WaterType;
 import java.util.ArrayList;
 import java.util.List;
 
-public class LoginActivity extends AppCompatActivity {
+public class LoginActivity <T> extends AppCompatActivity {
 
     private Model model;
 
@@ -50,7 +50,7 @@ public class LoginActivity extends AppCompatActivity {
 
     public void performLogin(View view) {
         //Create a new user from the username and password fields
-        //User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
+        User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
 
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity {
                 null,                                     // don't filter by row groups
                 sortOrder                                 // The sort order
         );
-        List<User> itemIds = new ArrayList<>();
+        ArrayList<User> itemIds = new ArrayList<>();
         //Grabs usernames from the db and add them to the itemIDS arrayList
         while (cursor.moveToNext()) {
             String itemId = cursor.getString(
@@ -92,10 +92,10 @@ public class LoginActivity extends AppCompatActivity {
             itemIds.add(user);
         }
         cursor.close();
-        validateLogin(itemIds);
-        //Loops to see if the username is already in the db
+        if (!validateLogin(itemIds, _user)) {
 
 
+            //Loops to see if the username is already in the db
 
 
             //If username/pass do not match, create a dialog to let them know
@@ -112,29 +112,34 @@ public class LoginActivity extends AppCompatActivity {
                     });
             AlertDialog alert11 = builder1.create();
             alert11.show();
+        } else {
+
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            //If they return from HomeActivity (Logout),
+            //this will return to the parent activity (main activity
+            finish();
+
+        }
 
     }
-    public void validateLogin (List<User> itemIds) {
+    public boolean validateLogin (ArrayList<User> itemIds, User newUser) {
 
         for (User u : itemIds) {
-            if (emailField.getText().toString().equals(u.getUserName())) {
+            if (newUser.getUserName().equals(u.getUserName())) {
                 System.out.print(u.toString());
-                if (passwordField.getText().toString().equals(u.getPassWord())) {
+                if (newUser.getPassWord().equals(u.getPassWord())) {
 
 
-                    model.setCurrentUser(u);
+                   // model.setCurrentUser(u);
 
                     //Move on to the Home Screen once logged in
-                    Intent intent = new Intent(this, HomeActivity.class);
-                    startActivity(intent);
-                    //If they return from HomeActivity (Logout),
-                    //this will return to the parent activity (main activity
-                    finish();
-                    return;
+                  return true;
 
                 }
             }
         }
+        return false;
 
     }
 
