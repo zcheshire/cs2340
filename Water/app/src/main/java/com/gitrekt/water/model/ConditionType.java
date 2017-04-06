@@ -4,6 +4,10 @@ package com.gitrekt.water.model;
  * Created by zacharycheshire on 3/1/17.
  */
 
+
+/**
+ * Enum of condition types
+ */
 public enum ConditionType {
     WASTE("Waste"),
     TREATABLECLEAR("Treatable-Clear"),

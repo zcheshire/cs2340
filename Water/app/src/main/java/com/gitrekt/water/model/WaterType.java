@@ -9,6 +9,9 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by zacharycheshire on 3/1/17.
  */
 
+/**
+ * Enum of water types
+ */
 public enum WaterType {
     BOTTLED("Bottled"),
     WELL("Well"),
