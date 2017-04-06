@@ -14,6 +14,9 @@ public class UserReport {
     String longitude;
     String latitude;
     static int reportNumber;
+    String userr;
+    String waterTypee;
+    String conditionTypee;
     public UserReport (User user, WaterType waterType,ConditionType conditionType, String location, String longitude, String latitude) {
         this.user = user;
         this.waterType = waterType;
@@ -25,10 +28,35 @@ public class UserReport {
 
 
     }
+    public UserReport (String user, String waterType, String conditionType, String location, String longitude, String latitude) {
+
+        this.userr = user;
+        this.conditionTypee = conditionType;
+        this.waterTypee = waterType;
+        this.location = location;
+        this.latitude = latitude;
+        this.longitude = longitude;
+
+    }
     //Gets user that made the report
     public User getUser () {
 
         return this.user;
+
+    }
+    public String getUserr () {
+
+        return this.userr;
+
+    }
+    public String getWc () {
+
+        return this.conditionTypee;
+
+    }
+    public String getWt () {
+
+        return this.waterTypee;
 
     }
     //Auto generates a report ID

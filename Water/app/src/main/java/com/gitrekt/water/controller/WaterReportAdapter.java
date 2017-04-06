@@ -50,9 +50,9 @@ public class WaterReportAdapter extends BaseAdapter {
         TextView tvLocation = (TextView) v.findViewById(R.id.location);
         TextView tvPostID = (TextView) v.findViewById(R.id.postID);
 
-        tvUser.setText(userReports.get(position).getUser().getUserName());
-        tvType.setText(userReports.get(position).getType().toString());
-        tvCondition.setText(userReports.get(position).getCondition().toString());
+        tvUser.setText(userReports.get(position).getUserr());
+        tvType.setText(userReports.get(position).getWt());
+        tvCondition.setText(userReports.get(position).getWc());
         tvLocation.setText(userReports.get(position).getLocation());
         tvPostID.setText(userReports.get(position).getReportNumber());
 

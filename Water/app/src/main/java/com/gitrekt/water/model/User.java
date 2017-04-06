@@ -8,6 +8,7 @@ public class User {
     private String userName;
     private String passWord;
     private UserType userType;
+    private String userTypee;
 
     public User(String userName, String passWord, UserType userType) {
         this.userName = userName;
@@ -15,12 +16,21 @@ public class User {
         this.userType = userType;
     }
 
+    public User(String userName, String passWord, String userType) {
+        this.userName = userName;
+        this.passWord = passWord;
+        this.userTypee = userType;
+    }
     public User(String userName, String passWord) {
-        this(userName, passWord, null);
+        this.userName = userName;
+        this.passWord = passWord;
+        this.userType = null;
     }
 
     public User() {
-        this(null, null, null);
+        this.userName = null;
+        this.passWord = null;
+        this.userType = null;
     }
 
     public String getUserName() {

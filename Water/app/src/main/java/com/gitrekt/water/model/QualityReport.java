@@ -8,8 +8,10 @@ import java.util.Calendar;
 
 public class QualityReport {
     User user;
+   public String userr;
     OverallCondition overallCondition;
     String location;
+   public String overallConditionn;
     String longitude;
     String latitude;
     Calendar date;
@@ -26,6 +28,20 @@ public class QualityReport {
         this.longitude = longitude;
         this.latitude = latitude;
         this.date = date;
+        //this.time = time;
+        this.virusPPM = virusPPM;
+        this.contaminantPPM = contaminantPPM;
+        this.reportNumber = reportNumber + 1;
+
+
+    }
+    public QualityReport (String user, String overallCondition, String location, String longitude, String latitude, String virusPPM, String contaminantPPM) {
+        this.userr = user;
+        this.overallConditionn = overallCondition;
+        this.location = location;
+        this.longitude = longitude;
+        this.latitude = latitude;
+       // this.date = date;
         //this.time = time;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;

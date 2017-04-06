@@ -1,5 +1,7 @@
 package com.gitrekt.water.controller;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,8 +10,14 @@ import android.widget.TextView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
+import com.gitrekt.water.model.UserReaderContract;
+import com.gitrekt.water.model.UserReaderDbHelper;
+import com.gitrekt.water.model.UserReport;
 
 import org.w3c.dom.Text;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class ViewReportActivity extends AppCompatActivity {
     private TextView user;
@@ -17,6 +25,7 @@ public class ViewReportActivity extends AppCompatActivity {
     private TextView condition;
     private TextView location;
     private TextView postID;
+
 
     private Model model;
     //set content for the view
@@ -31,11 +40,13 @@ public class ViewReportActivity extends AppCompatActivity {
         location = (TextView) findViewById(R.id.location);
         postID = (TextView) findViewById(R.id.postID);
 
-        user.setText(model.getUserReports().get(0).getUser().getUserName());
+        user.setText(model.getUserReports().get(0).getUser().getUserName().toString());
         condition.setText(model.getUserReports().get(0).getCondition().toString());
         type.setText(model.getUserReports().get(0).getType().toString());
         location.setText(model.getUserReports().get(0).getLocation().toString());
-        postID.setText(model.getUserReports().get(0).getReportNumber());
+        postID.setText(model.getUserReports().get(0).getReportNumber().toString());
+
+
 
 
     }

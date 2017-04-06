@@ -3,7 +3,10 @@ import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
+
+import android.content.ContentValues;
 import android.content.Intent;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -17,6 +20,8 @@ import com.gitrekt.water.model.ConditionType;
 import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.QualityReport;
 //import com.gitrekt.water.model.UserReport;
+import com.gitrekt.water.model.UserReaderContract;
+import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserType;
 //import com.gitrekt.water.model.WaterType;
 import com.gitrekt.water.model.OverallCondition;
@@ -35,6 +40,8 @@ public class PurityActivity extends AppCompatActivity {
     private EditText virusField;
     private EditText contaminantField;
     private Button submitReport;
+    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -67,8 +74,25 @@ public class PurityActivity extends AppCompatActivity {
                 locationField.getText().toString(), longitudeField.getText().toString(), latitudeField.getText().toString(),
         calobj, virusField.getText().toString(), contaminantField.getText().toString());
         model.addQualityReport(_report);
-        System.out.print("Hello");
-        System.out.print(model.getQualityReports().get(0).getLongitude().toString());
+        // Gets the data repository in write mode
+        SQLiteDatabase data = mDbHelper.getWritableDatabase();
+
+// Create a new map of values, where column names are the keys
+        ContentValues values = new ContentValues();
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, virusField.getText().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_CPPM, contaminantField.getText().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, conditionSpinner.getSelectedItem().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LON, longitudeField.getText().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LAT, latitudeField.getText().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LOC, locationField.getText().toString());
+
+
+
+// Insert the new row, returning the primary key value of the new row
+        long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
+        //model.addQualityReport(_report);
         //Intent intent = new Intent(this, ViewReportActivity.class);
         //startActivity(intent);
         finish();

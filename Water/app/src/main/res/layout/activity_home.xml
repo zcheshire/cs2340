@@ -77,13 +77,22 @@
         android:onClick="viewQualityReport"/>
 
     <Button
+        android:text="Button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button3"
+        android:layout_alignParentTop="true"
+        android:layout_toLeftOf="@+id/settingsButton"
+        android:layout_toStartOf="@+id/settingsButton" />
+
+    <Button
         android:text="View QP"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/reportListView"
-        android:layout_alignLeft="@+id/logoutButton"
-        android:layout_alignStart="@+id/logoutButton"
         android:id="@+id/viewQualityReport"
-        android:onClick="viewQualityReports"/>
+        android:onClick="viewQualityReports"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/reportButton"
+        android:layout_toEndOf="@+id/reportButton" />
 
 </RelativeLayout>

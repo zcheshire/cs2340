@@ -52,8 +52,8 @@ public class QualityReportAdapter extends BaseAdapter {
         //TextView tvVirus = (TextView) v.findViewById(R.id.virusPPM);
         TextView tvPostID = (TextView) v.findViewById(R.id.postID);
 
-        tvUser.setText(qualityReports.get(position).getUser().getUserName());
-        tvCondition.setText(qualityReports.get(position).getCondition().toString());
+        tvUser.setText(qualityReports.get(position).userr);
+        tvCondition.setText(qualityReports.get(position).overallConditionn);
         tvVirus.setText(qualityReports.get(position).getVirusPPM().toString());
         tvContaminant.setText(qualityReports.get(position).getContaminantPPM().toString());
         tvLocation.setText(qualityReports.get(position).getLocation());

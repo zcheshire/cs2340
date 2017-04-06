@@ -29,7 +29,7 @@ Controller for the register activity
 
 
  */
-public class RegisterActivity extends AppCompatActivity {
+public class RegisterActivity <T> extends AppCompatActivity {
     private Model model;
 
     private Spinner selectedType;
@@ -80,6 +80,7 @@ registers a new user if the username is not taken
                 passwordRegisterField.getText().toString(),
                 (UserType) selectedType.getSelectedItem());
 
+
         SQLiteDatabase db = mDbHelper.getReadableDatabase();
 
 // Define a projection that specifies which columns from the database
@@ -114,48 +115,56 @@ registers a new user if the username is not taken
             itemIds.add(itemId);
         }
         cursor.close();
-        //Loops to see if the username is already in the db
-        for (String u : itemIds) {
-            if (_user.getUserName().equals(u.toString())) {
-                System.out.print(u.toString());
+        if (checkUser(itemIds, emailRegisterField.getText().toString()) == true) {
 
 
-                //If username is taken, then notify user
-                Context context = view.getContext();
-                AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
-                builder1.setMessage("Username is already taken");
-                builder1.setCancelable(true);
-                builder1.setPositiveButton(
-                        "OK",
-                        new DialogInterface.OnClickListener() {
-                            public void onClick(DialogInterface dialog, int id) {
-                                dialog.cancel();
-                            }
-                        });
-                AlertDialog alert11 = builder1.create();
-                alert11.show();
-                emailRegisterField.setText("");
-                passwordRegisterField.setText("");
-                return;
-            }
-        }
+            //Loops to see if the username is already in the db
 
-        //If username does not already exist, then the user is added to User List
-       
-        // Gets the data repository in write mode
-        SQLiteDatabase data = mDbHelper.getWritableDatabase();
+
+            //If username does not already exist, then the user is added to User List
+
+            // Gets the data repository in write mode
+            SQLiteDatabase data = mDbHelper.getWritableDatabase();
 
 // Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, emailRegisterField.getText().toString());
+            ContentValues values = new ContentValues();
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, emailRegisterField.getText().toString());
 
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, passwordRegisterField.getText().toString());
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, passwordRegisterField.getText().toString());
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WT, "");
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, "");
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, "-1");
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_ADMIN, selectedType.getSelectedItem().toString());
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LON, "-1");
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LAT, "");
+            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LOC, "");
 
 // Insert the new row, returning the primary key value of the new row
-        long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
-        //Move on to the Home Screen once logged in
-        Intent intent = new Intent(this, HomeActivity.class);
-        startActivity(intent);
+            long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
+            //Move on to the Home Screen once logged in
+            model.addUser(_user);
+            model.setCurrentUser(_user);
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+        } else {
+            Context context = view.getContext();
+            AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
+            builder1.setMessage("Username is already taken");
+            builder1.setCancelable(true);
+            builder1.setPositiveButton(
+                    "OK",
+                    new DialogInterface.OnClickListener() {
+                        public void onClick(DialogInterface dialog, int id) {
+                            dialog.cancel();
+                        }
+                    });
+            AlertDialog alert11 = builder1.create();
+            alert11.show();
+            emailRegisterField.setText("");
+            passwordRegisterField.setText("");
+            return;
+
+        }
 
         //If they return from HomeActivity (Logout),
         //this will return to the parent activity (main activity)
@@ -163,4 +172,17 @@ registers a new user if the username is not taken
 
 
     }
+    public boolean checkUser(List<String> itemIds, String _user) {
+        boolean bool = true;
+        for (String u : itemIds) {
+            if (_user.equals(u)) {
+                return false;
+                //If username is taken, then notify user
+
+
+            }
+        }
+        return true;
+    }
 }
+

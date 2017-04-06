@@ -1,10 +1,14 @@
 package com.gitrekt.water.controller;
 
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
 import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
+import com.gitrekt.water.model.UserReaderContract;
+import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
 import com.gitrekt.water.model.QualityReport;
 import com.google.android.gms.maps.CameraUpdateFactory;
@@ -23,6 +27,8 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
     private GoogleMap mMap;
     private Model model;
+    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -54,14 +60,70 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
 
 
          */
-        ArrayList<UserReport> list = model.getUserReports();
-        ArrayList<QualityReport> qpList = model.getQualityReports();
+        //ArrayList<UserReport> list = model.getUserReports();
+        //ArrayList<QualityReport> qpList = model.getQualityReports();
+        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+
+// Define a projection that specifies which columns from the database
+// you will actually use after this query.
+        String[] projection = {
+                UserReaderContract.FeedEntry._ID,
+                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME,
+                UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD,
+                UserReaderContract.FeedEntry.COLUMN_NAME_WT,
+                UserReaderContract.FeedEntry.COLUMN_NAME_VPPM,
+                UserReaderContract.FeedEntry.COLUMN_NAME_WC,
+                UserReaderContract.FeedEntry.COLUMN_NAME_LON,
+                UserReaderContract.FeedEntry.COLUMN_NAME_LAT,
+                UserReaderContract.FeedEntry.COLUMN_NAME_LOC
+        };
+
+// Filter results WHERE "username" is anything
+        String selection = UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " = ?";
+// How you want the results sorted in the resulting Cursor
+        String sortOrder =
+                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " DESC";
+//Query the db using a cursor
+        Cursor cursor = db.query(
+                UserReaderContract.FeedEntry.TABLE_NAME,  // The table to query
+                projection,                               // The columns to return
+                null,//"",//selection,                    // The columns for the WHERE clause
+                null,//selectionArgs,                     // The values for the WHERE clause
+                null,                                     // don't group the rows
+                null,                                     // don't filter by row groups
+                sortOrder                                 // The sort order
+        );
+        ArrayList<UserReport> itemIds = new ArrayList<>();
+        //Grabs information from db for Water Report
+        model.setUserReports(null);
+        while (cursor.moveToNext()) {
+            String itemId = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME));
+            String itemWT = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_WT));
+            String itemWC = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_WC));
+            String itemLon = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LON));
+            String itemVP = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM));
+            String itemLat = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LAT));
+            String itemLoc = cursor.getString(
+                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LOC));
+            if (itemVP.equals("-1") && !itemLon.equals("-1") && !itemLat.equals("")
+                    && !itemLat.equals("-1")) {
+                UserReport report = new UserReport(itemId, itemWT, itemWC, itemLoc, itemLon, itemLat);
+                itemIds.add(report);
+            }
+        }
+        cursor.close();
         //Loops through reports and adds them to the mapView
-        for (UserReport report: list) {
+        for (UserReport report: itemIds) {
             double longitude = Double.parseDouble(report.getLongitude());
             double latitude = Double.parseDouble(report.getLatitude());
             LatLng point = new LatLng(longitude, latitude);
-            mMap.addMarker(new MarkerOptions().position(point).title(report.getType().toString() + report.getCondition()));
+            mMap.addMarker(new MarkerOptions().position(point).title(report.getWt().toString() + report.getWc()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
         }
         /*for (QualityReport qreport: qpList) {

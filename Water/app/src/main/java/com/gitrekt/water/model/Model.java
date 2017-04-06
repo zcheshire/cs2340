@@ -43,6 +43,10 @@ public class Model {
     public ArrayList<UserReport> getUserReports() {
         return this.userReports;
     }
+    public void setUserReports(ArrayList<UserReport> arr) {
+        this.userReports = arr;
+    }
+
     public ArrayList<QualityReport> getQualityReports() {
         return this.qualityReports;
     }
