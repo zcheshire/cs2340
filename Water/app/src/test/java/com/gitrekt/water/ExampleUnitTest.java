@@ -1,22 +1,27 @@
 package com.gitrekt.water;
 
-import android.content.Context;
-
 import com.gitrekt.water.controller.LoginActivity;
 import com.gitrekt.water.controller.RegisterActivity;
+<<<<<<< HEAD
 import android.database.sqlite.SQLiteDatabase;
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 
 import org.junit.Test;
+=======
+
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
 import static org.junit.Assert.*;
 
 import com.gitrekt.water.controller.SettingsActivity;
 import com.gitrekt.water.model.User;
 
+<<<<<<< HEAD
 import android.view.View;
 import org.junit.After;
 import org.junit.Before;
+=======
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
 import org.junit.Test;
 
 import java.util.ArrayList;
@@ -26,11 +31,12 @@ import java.util.ArrayList;
  *
  * @see <a href="http://d.android.com/tools/testing">Testing documentation</a>
  */
+@SuppressWarnings("unchecked")
 public class ExampleUnitTest {
     private static final int TIMEOUT = 200;
-    private RegisterActivity<String> register = new RegisterActivity<String>();
-    private LoginActivity<User> login = new LoginActivity();
-    private SettingsActivity<User> settings = new SettingsActivity();
+    private final RegisterActivity<String> register = new RegisterActivity<>();
+    private final LoginActivity<User> login = new LoginActivity();
+    private final SettingsActivity<User> settings = new SettingsActivity();
 
 
 

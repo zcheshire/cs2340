@@ -5,13 +5,16 @@ package com.gitrekt.water.model;
  * Types of different users on the system
  */
 
+/**
+ * Enum of user types
+ */
 public enum UserType {
     USER("User"),
     WORKER("Worker"),
     MANAGER("Manager"),
     ADMIN("Admin");
 
-    private String name;
+    private final String name;
 
     UserType(String name) {
         this.name = name;

@@ -10,7 +10,6 @@ import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
-import com.gitrekt.water.model.QualityReport;
 import com.google.android.gms.maps.CameraUpdateFactory;
 import com.google.android.gms.maps.GoogleMap;
 import com.google.android.gms.maps.OnMapReadyCallback;
@@ -18,16 +17,12 @@ import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.maps.model.LatLng;
 import com.google.android.gms.maps.model.MarkerOptions;
 
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
 import java.util.ArrayList;
-import java.util.Calendar;
 
 public class MapsActivity <T> extends FragmentActivity implements OnMapReadyCallback {
 
-    private GoogleMap mMap;
     private Model model;
-    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+    private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
 
 
     @Override
@@ -51,10 +46,10 @@ public class MapsActivity <T> extends FragmentActivity implements OnMapReadyCall
      * If Google Play services is not installed on the device, the user will be prompted to install
      * it inside the SupportMapFragment. This method will only be triggered once the user has
      * installed Google Play services and returned to the app.
+     * @param googleMap
      */
     @Override
     public void onMapReady(GoogleMap googleMap) {
-        mMap = googleMap;
         /*
         Loops through the water reports and attaches them to maps
 
@@ -134,9 +129,14 @@ public class MapsActivity <T> extends FragmentActivity implements OnMapReadyCall
             double longitude = Double.parseDouble(report.getLongitude());
             double latitude = Double.parseDouble(report.getLatitude());
             LatLng point = new LatLng(longitude, latitude);
+<<<<<<< HEAD
             mMap.addMarker(new MarkerOptions().position(point).title(report.getWt().toString() + report.getWc()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
             return true;
+=======
+            googleMap.addMarker(new MarkerOptions().position(point).title(report.getWt() + report.getWc()));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
         }
         return false;
     }

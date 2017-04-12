@@ -3,9 +3,6 @@ package com.gitrekt.water.model;
 /**
  * Created by zacharycheshire on 3/27/17.
  */
-import android.content.Context;
-import android.database.sqlite.SQLiteDatabase;
-import android.database.sqlite.SQLiteOpenHelper;
 import android.provider.BaseColumns;
 
 /*
@@ -16,7 +13,8 @@ Class outlines Database
 
 public final class UserReaderContract {
 
-    private UserReaderContract() {};
+    private UserReaderContract() {}
+
     /* Inner class that defines the table contents */
     public static class FeedEntry implements BaseColumns {
 

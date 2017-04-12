@@ -11,7 +11,7 @@
     android:layout_width="wrap_content">
 
     <TextView
-        android:text="Welcome, edit any text field to change your information"
+        android:text="@string/welcome_edit_any_text_field_to_change_your_information"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
@@ -20,7 +20,7 @@
         android:id="@+id/textView5" />
 
     <TextView
-        android:text="Email:"
+        android:text="@string/email3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView5"
@@ -32,7 +32,7 @@
         android:id="@+id/textView6" />
 
     <TextView
-        android:text="Password:"
+        android:text="@string/password3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_below="@+id/textView6"
@@ -66,7 +66,7 @@
         android:layout_alignStart="@+id/editEmail" />
 
     <Button
-        android:text="Edit"
+        android:text="@string/edit"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/editButtton"
@@ -79,7 +79,7 @@
         android:layout_marginBottom="87dp" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/button2"
@@ -90,7 +90,7 @@
         android:layout_toEndOf="@+id/textView6" />
 
     <TextView
-        android:text="TextView"
+        android:text="@string/textview"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/userTypeLabel"

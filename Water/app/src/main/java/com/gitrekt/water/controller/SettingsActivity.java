@@ -3,13 +3,11 @@ package com.gitrekt.water.controller;
 import android.app.AlertDialog;
 import android.content.Context;
 import android.content.DialogInterface;
-import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.Spinner;
 import android.widget.TextView;
 
 import com.gitrekt.water.R;
@@ -30,7 +28,6 @@ public class SettingsActivity <T> extends AppCompatActivity {
 
     private Model model;
     private TextView textView5;
-    private TextView userTypeLabel;
     private EditText emailField;
     private EditText passwordField;
    // private Spinner selectedType;
@@ -52,7 +49,7 @@ public class SettingsActivity <T> extends AppCompatActivity {
         passwordField = (EditText) findViewById(R.id.editPassword);
         passwordField.setText(model.getCurrentUser().getPassWord());
         textView5 = (TextView) findViewById(R.id.textView5);
-        userTypeLabel = (TextView) findViewById(R.id.userTypeLabel);
+        TextView userTypeLabel = (TextView) findViewById(R.id.userTypeLabel);
         userTypeLabel.setText("User Type: " + model.getCurrentUser().getUserType());
 
         //selectedType = (Spinner) findViewById(R.id.userTypeSpinner);
@@ -63,21 +60,18 @@ public class SettingsActivity <T> extends AppCompatActivity {
 
        // selectedType.setAdapter(userTypeAdapter);
     }
-    /*
-
-    goes to previous view
-    @param view view the user is on
-
+    /**
+     * Returns to previous view
+     * @param view view the user is on
      */
     public void cancelEdit(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
-    /*
-    Edits the users account
-    @param view view the user is on
 
-
+    /**
+     * Edits the users account
+     * @param view view the user is on
      */
     public void performEdit(View view) {
         User _user = model.getCurrentUser();
@@ -104,7 +98,6 @@ public class SettingsActivity <T> extends AppCompatActivity {
             alert11.show();
             emailField.setText("");
             passwordField.setText("");
-            return;
 
         } else {
 
@@ -121,6 +114,15 @@ public class SettingsActivity <T> extends AppCompatActivity {
         }
 
     }
+
+    /**
+     * Checks to see if the username a user wishes to change to
+     * already exists
+     * @param check
+     * @param _user
+     * @param uList
+     * @return boolean
+     */
     public boolean changeName (String check, User _user, ArrayList<User> uList) {
         for (User u : uList) {
             if (u != _user) {

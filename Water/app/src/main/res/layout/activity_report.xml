@@ -11,7 +11,7 @@
     tools:context="com.gitrekt.water.controller.ReportActivity">
 
     <Button
-        android:text="Submit"
+        android:text="@string/submit1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -21,7 +21,7 @@
         android:onClick="submitReport" />
 
     <Button
-        android:text="Cancel"
+        android:text="@string/cancel4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -37,7 +37,7 @@
         android:inputType="textPersonName"
         android:ems="10"
         android:id="@+id/locationField"
-        android:hint="Location"
+        android:hint="@string/location2"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
@@ -54,7 +54,7 @@
         android:hint="longitude" />
 
     <TextView
-        android:text="Water Condition"
+        android:text="@string/water_condition2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView8"
@@ -93,7 +93,7 @@
         android:layout_alignParentStart="true" />
 
     <TextView
-        android:text="Water Type"
+        android:text="@string/water_type2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/textView9"

@@ -14,8 +14,13 @@ import com.gitrekt.water.model.UserReaderContract;
 public class UserReaderDbHelper extends SQLiteOpenHelper {
 
     // If you change the database schema, you must increment the database version.
+<<<<<<< HEAD
     public static final int DATABASE_VERSION = 13;
     public static final String DATABASE_NAME = "UserReader.db";
+=======
+    private static final int DATABASE_VERSION = 12;
+    private static final String DATABASE_NAME = "UserReader.db";
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
 
     public UserReaderDbHelper(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);

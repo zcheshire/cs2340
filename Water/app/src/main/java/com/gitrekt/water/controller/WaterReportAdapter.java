@@ -6,7 +6,6 @@ import android.widget.BaseAdapter;
 import android.content.*;
 import com.gitrekt.water.R;
 import android.widget.TextView;
-import android.support.v7.app.AppCompatActivity;
 
 import com.gitrekt.water.model.UserReport;
 
@@ -17,31 +16,58 @@ import java.util.ArrayList;
  * Adapter for Water Report list view
  */
 
-public class WaterReportAdapter extends BaseAdapter {
+class WaterReportAdapter extends BaseAdapter {
 
-    private Context myContext;
-    private ArrayList<UserReport> userReports;
+    private final Context myContext;
+    private final ArrayList<UserReport> userReports;
+
+    /**
+     * Creates new Water Report Adapter
+     * @param myContext
+     * @param userReports
+     */
 
     public WaterReportAdapter(Context myContext, ArrayList<UserReport> userReports) {
         this.myContext = myContext;
         this.userReports = userReports;
     }
 
+    /**
+     * Gets the number of user reports
+     * @return int size
+     */
     @Override
     public int getCount() {
         return userReports.size();
     }
 
+    /**
+     * Gets the repost at a certain position within the user report array
+     * @param position
+     * @return Object report
+     */
     @Override
     public Object getItem(int position) {
         return userReports.get(position);
     }
 
+    /**
+     * Gets the id of a report at a certain position within array
+     * @param position
+     * @return
+     */
     @Override
     public long getItemId(int position) {
         return position;
     }
 
+    /**
+     * Generates the list view that displays the reports
+     * @param position
+     * @param convertView
+     * @param parent
+     * @return View v
+     */
     @Override
     public View getView(int position, View convertView, ViewGroup parent) {
         View v = View.inflate(myContext, R.layout.activity_view_report, null);

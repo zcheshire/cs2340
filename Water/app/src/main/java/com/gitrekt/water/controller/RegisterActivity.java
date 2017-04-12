@@ -35,7 +35,7 @@ public class RegisterActivity <T> extends AppCompatActivity {
     private Spinner selectedType;
     private EditText emailRegisterField;
     private EditText passwordRegisterField;
-    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+    private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,26 +51,33 @@ public class RegisterActivity <T> extends AppCompatActivity {
         selectedType = (Spinner) findViewById(R.id.userTypeSpinner);
 
         ArrayAdapter<UserType> userTypeAdapter =
-                new ArrayAdapter<UserType>(this, android.R.layout.simple_spinner_item, UserType.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, UserType.values());
 
         userTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         selectedType.setAdapter(userTypeAdapter);
     }
 
-/*
-Takes the user to the previous scree
-@param view current view
-
- */
+    /**
+     * Takes the user to the previous scree
+     * @param view current view
+     */
     public void cancelRegister(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
+<<<<<<< HEAD
 /*
 * registers a new user if the username is not taken
 * @param view current view
 */
+=======
+
+    /**
+     * Registers a new user if the username is not taken
+     * @param view current view
+     */
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public void performRegister(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailRegisterField.getText().toString(),
@@ -112,7 +119,7 @@ Takes the user to the previous scree
             itemIds.add(itemId);
         }
         cursor.close();
-        if (checkUser(itemIds, emailRegisterField.getText().toString()) == true) {
+        if (checkUser(itemIds, emailRegisterField.getText().toString())) {
 
 
             //Loops to see if the username is already in the db
@@ -169,11 +176,20 @@ Takes the user to the previous scree
 
 
     }
+<<<<<<< HEAD
     /*
     Checks if the username is already taken
     @param itemIds list of usernames from db
     @param _user the name to be checked
     @return boolean whether the username already exists or not
+=======
+
+    /**
+     * Checks to make sure the user doesn't already exist
+     * @param itemIds
+     * @param _user
+     * @return boolean
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
      */
     public boolean checkUser(List<String> itemIds, String _user) {
         boolean bool = true;

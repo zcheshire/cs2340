@@ -1,13 +1,11 @@
 package com.gitrekt.water.controller;
 
 import android.content.ContentValues;
-import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ArrayAdapter;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Spinner;
 
@@ -16,11 +14,8 @@ import com.gitrekt.water.model.Model;
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
-import com.gitrekt.water.model.UserType;
 import com.gitrekt.water.model.WaterType;
 import com.gitrekt.water.model.ConditionType;
-
-import java.sql.BatchUpdateException;
 
 public class ReportActivity extends AppCompatActivity {
     private Model model;
@@ -30,7 +25,7 @@ public class ReportActivity extends AppCompatActivity {
     private EditText locationField;
     private EditText longitudeField;
     private EditText latitudeField;
-    UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
+    private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
 
 
     @Override
@@ -47,23 +42,31 @@ public class ReportActivity extends AppCompatActivity {
         latitudeField = (EditText) findViewById(R.id.latitudeField);
 
         ArrayAdapter<WaterType> waterTypeAdapter =
-                new ArrayAdapter<WaterType>(this, android.R.layout.simple_spinner_item, WaterType.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, WaterType.values());
 
         waterTypeAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         typeSpinner.setAdapter(waterTypeAdapter);
 
         ArrayAdapter<ConditionType> waterConditionAdapter =
-                new ArrayAdapter<ConditionType>(this, android.R.layout.simple_spinner_item, ConditionType.values());
+                new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, ConditionType.values());
 
         waterConditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         conditionSpinner.setAdapter(waterConditionAdapter);
     }
+<<<<<<< HEAD
 /*Sends the report to the database
 @param v the view
 
  */
+=======
+
+    /**
+     * Sends the report data to the model
+     * @param v
+     */
+>>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     void submitReport(View v) {
         UserReport _report = new UserReport(model.getCurrentUser(),
                 (WaterType) typeSpinner.getSelectedItem(),
@@ -76,8 +79,8 @@ public class ReportActivity extends AppCompatActivity {
 
 // Create a new map of values, where column names are the keys
         ContentValues values = new ContentValues();
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord().toString());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName());
+        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WT, typeSpinner.getSelectedItem().toString());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, conditionSpinner.getSelectedItem().toString());
         values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, "-1");
@@ -98,4 +101,5 @@ public class ReportActivity extends AppCompatActivity {
     void cancelReport(View v) {
         finish();
     }
+
 }
