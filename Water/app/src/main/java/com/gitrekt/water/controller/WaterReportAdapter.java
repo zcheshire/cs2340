@@ -14,6 +14,7 @@ import java.util.ArrayList;
 
 /**
  * Created by jerodray on 3/7/17.
+ * Adapter for Water Report list view
  */
 
 public class WaterReportAdapter extends BaseAdapter {

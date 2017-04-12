@@ -47,7 +47,11 @@ public class LoginActivity <T> extends AppCompatActivity {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
+/*
+Called upon click and logs the user in
+@param view the current view
 
+ */
     public void performLogin(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
@@ -116,6 +120,7 @@ public class LoginActivity <T> extends AppCompatActivity {
 
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
+            model.setCurrentUser(_user);
             //If they return from HomeActivity (Logout),
             //this will return to the parent activity (main activity
             finish();
@@ -123,6 +128,13 @@ public class LoginActivity <T> extends AppCompatActivity {
         }
 
     }
+    /*
+Validates user login through db
+@param rep ArrayList of usernames
+@param newUser user to be checked
+@return boolean wether the user exists
+
+ */
     public boolean validateLogin (ArrayList<User> itemIds, User newUser) {
 
         for (User u : itemIds) {
@@ -131,7 +143,7 @@ public class LoginActivity <T> extends AppCompatActivity {
                 if (newUser.getPassWord().equals(u.getPassWord())) {
 
 
-                   // model.setCurrentUser(u);
+
 
                     //Move on to the Home Screen once logged in
                   return true;

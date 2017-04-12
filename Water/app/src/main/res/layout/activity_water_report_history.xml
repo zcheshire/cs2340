@@ -10,4 +10,112 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gitrekt.water.controller.WaterReportHistory">
 
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="52dp"
+        android:id="@+id/searchText"
+        android:hint="Enter a Location" />
+
+    <TextView
+        android:text="..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/locationShow"
+        android:layout_alignRight="@+id/locationShow"
+        android:layout_alignEnd="@+id/locationShow"
+        android:layout_marginTop="34dp"
+        android:id="@+id/wtShow" />
+
+    <TextView
+        android:text="..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/wtShow"
+        android:layout_alignLeft="@+id/nameShow"
+        android:layout_alignStart="@+id/nameShow"
+        android:layout_marginTop="35dp"
+        android:id="@+id/wcShow" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/nameShow"
+        android:layout_centerVertical="true"
+        android:layout_alignLeft="@+id/locationShow"
+        android:layout_alignStart="@+id/locationShow"
+        android:text="..." />
+
+    <TextView
+        android:text="..."
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:id="@+id/locationShow"
+        android:layout_below="@+id/nameShow"
+        android:layout_toRightOf="@+id/button4"
+        android:layout_toEndOf="@+id/button4" />
+
+    <TextView
+        android:text="Username:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/nameShow"
+        android:layout_toLeftOf="@+id/button4"
+        android:layout_toStartOf="@+id/button4"
+        android:layout_marginRight="32dp"
+        android:layout_marginEnd="32dp"
+        android:id="@+id/nameLabel" />
+
+    <TextView
+        android:text="WaterType:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wtShow"
+        android:layout_alignRight="@+id/locationLabel"
+        android:layout_alignEnd="@+id/locationLabel"
+        android:id="@+id/wtLabel" />
+
+    <TextView
+        android:text="WaterCondition:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/wcShow"
+        android:layout_alignLeft="@+id/wtLabel"
+        android:layout_alignStart="@+id/wtLabel"
+        android:id="@+id/wcLabel" />
+
+    <TextView
+        android:text="Location:"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/locationLabel"
+        android:layout_alignBaseline="@+id/locationShow"
+        android:layout_alignBottom="@+id/locationShow"
+        android:layout_alignLeft="@+id/nameLabel"
+        android:layout_alignStart="@+id/nameLabel" />
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_above="@+id/nameShow"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="53dp" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_below="@+id/searchText"
+        android:layout_alignRight="@+id/searchText"
+        android:layout_alignEnd="@+id/searchText"
+        android:id="@+id/editText2"
+        android:hint="Enter Year" />
 </RelativeLayout>

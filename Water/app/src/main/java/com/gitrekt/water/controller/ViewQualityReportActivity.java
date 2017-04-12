@@ -35,6 +35,10 @@ public class ViewQualityReportActivity extends AppCompatActivity {
         adapter = new QualityReportAdapter(getApplicationContext(), model.getQualityReports());
         lv.setAdapter(adapter);
     }
+    /*
+    Automatically loads the quality reports into the view upon resume
+
+     */
     protected void onResume() {
         super.onRestart();
         SQLiteDatabase db = mDbHelper.getReadableDatabase();

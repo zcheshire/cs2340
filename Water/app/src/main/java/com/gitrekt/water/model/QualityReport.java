@@ -19,7 +19,7 @@ public class QualityReport {
     String virusPPM;
     String contaminantPPM;
     static int reportNumber;
-
+    //Constructor
     public QualityReport (User user, OverallCondition overallCondition, String location, String longitude, String latitude,
                        Calendar date, String virusPPM, String contaminantPPM) {
         this.user = user;
@@ -35,6 +35,7 @@ public class QualityReport {
 
 
     }
+    //Constructor for a username and not type
     public QualityReport (String user, String overallCondition, String location, String longitude, String latitude, String virusPPM, String contaminantPPM) {
         this.userr = user;
         this.overallConditionn = overallCondition;
@@ -72,14 +73,18 @@ public class QualityReport {
         return this.location;
 
     }
+    //Gets longitude of the report
     public String getLongitude () {
 
         return this.longitude;
     }
+    //Gets latitude of the report
+
     public String getLatitude () {
 
         return this.latitude;
     }
+    //Gets the date for the report
     public Calendar getDate () {
 
         return this.date;
@@ -90,11 +95,13 @@ public class QualityReport {
         return this.time;
 
     }*/
+    //Gets the virus PPM for the report
     public String getVirusPPM () {
 
         return this.virusPPM;
 
     }
+    //Gets the contaminant PPM for the report
     public String getContaminantPPM () {
 
         return this.contaminantPPM;

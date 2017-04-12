@@ -68,12 +68,9 @@ Takes the user to the previous scree
         this.onBackPressed();
     }
 /*
-
-registers a new user if the username is not taken
-@param view current view
-
-
- */
+* registers a new user if the username is not taken
+* @param view current view
+*/
     public void performRegister(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailRegisterField.getText().toString(),
@@ -172,6 +169,12 @@ registers a new user if the username is not taken
 
 
     }
+    /*
+    Checks if the username is already taken
+    @param itemIds list of usernames from db
+    @param _user the name to be checked
+    @return boolean whether the username already exists or not
+     */
     public boolean checkUser(List<String> itemIds, String _user) {
         boolean bool = true;
         for (String u : itemIds) {

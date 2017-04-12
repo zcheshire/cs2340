@@ -44,16 +44,21 @@ public class UserReport {
         return this.user;
 
     }
+    //Gets the username in String
+
     public String getUserr () {
 
         return this.userr;
 
     }
+    //Gets the water condition in String
     public String getWc () {
 
         return this.conditionTypee;
 
     }
+    //Gets the water type in String
+
     public String getWt () {
 
         return this.waterTypee;
@@ -82,10 +87,12 @@ public class UserReport {
         return this.location;
 
     }
+    //Gets the Longitude
     public String getLongitude () {
 
         return this.longitude;
     }
+    //Gets the latitude
     public String getLatitude () {
 
         return this.latitude;

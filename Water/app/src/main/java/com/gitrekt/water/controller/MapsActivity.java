@@ -23,7 +23,7 @@ import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
 
-public class MapsActivity extends FragmentActivity implements OnMapReadyCallback {
+public class MapsActivity <T> extends FragmentActivity implements OnMapReadyCallback {
 
     private GoogleMap mMap;
     private Model model;
@@ -118,22 +118,27 @@ public class MapsActivity extends FragmentActivity implements OnMapReadyCallback
             }
         }
         cursor.close();
+        findReports(itemIds);
         //Loops through reports and adds them to the mapView
+    }
+    /*
+
+    Finds reports to display on the map
+    @param itemIds list of UserReports
+    @return boolean wether reports were added or not
+
+     */
+    public boolean findReports (ArrayList<UserReport> itemIds) {
+
         for (UserReport report: itemIds) {
             double longitude = Double.parseDouble(report.getLongitude());
             double latitude = Double.parseDouble(report.getLatitude());
             LatLng point = new LatLng(longitude, latitude);
             mMap.addMarker(new MarkerOptions().position(point).title(report.getWt().toString() + report.getWc()));
             mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+            return true;
         }
-        /*for (QualityReport qreport: qpList) {
-            DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-            double longitude = Double.parseDouble(qreport.getLongitude());
-            double latitude = Double.parseDouble(qreport.getLatitude());
-            LatLng point = new LatLng(longitude, latitude);
-            String tmp = df.format(qreport.getDate().getTime());
-            mMap.addMarker(new MarkerOptions().position(point).title("Condition: " + qreport.getCondition().toString() + " " + tmp));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
-        }*/
+        return false;
     }
+
 }

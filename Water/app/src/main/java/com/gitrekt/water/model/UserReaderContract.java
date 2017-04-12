@@ -38,7 +38,10 @@ public final class UserReaderContract {
         public static final String COLUMN_NAME_LOC = "location";
 
     }
+    /*
 
+
+     */
     public static final String SQL_CREATE_ENTRIES =
             "CREATE TABLE " + FeedEntry.TABLE_NAME + " (" +
                     FeedEntry._ID + " INTEGER PRIMARY KEY, " +

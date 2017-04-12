@@ -4,11 +4,16 @@ import android.content.Context;
 
 import com.gitrekt.water.controller.LoginActivity;
 import com.gitrekt.water.controller.RegisterActivity;
+import android.database.sqlite.SQLiteDatabase;
+import com.gitrekt.water.model.UserReaderContract;
+import com.gitrekt.water.model.UserReaderDbHelper;
+
 import org.junit.Test;
 import static org.junit.Assert.*;
 
 import com.gitrekt.water.controller.SettingsActivity;
 import com.gitrekt.water.model.User;
+
 import android.view.View;
 import org.junit.After;
 import org.junit.Before;
@@ -28,6 +33,8 @@ public class ExampleUnitTest {
     private SettingsActivity<User> settings = new SettingsActivity();
 
 
+
+//Sammi hudock Junit Test
     @Test
     public void checkUserr() throws Exception {
         ArrayList<String> arr = new ArrayList<>();
@@ -42,6 +49,7 @@ public class ExampleUnitTest {
 
 
     }
+    //Zachary Cheshire Junit Test
     @Test
     public void login() throws Exception {
         ArrayList<User> userArr = new ArrayList<>();
@@ -59,6 +67,7 @@ public class ExampleUnitTest {
 
         assertEquals(true, login.validateLogin(userArr, user2));
     }
+    //JerodRay Junity Test
     @Test
     public void checkExisting() throws Exception {
         ArrayList<User> userArr = new ArrayList<>();
@@ -76,4 +85,5 @@ public class ExampleUnitTest {
 
         assertEquals(true, settings.changeName(user2.getUserName(), user2, userArr));
     }
+
 }

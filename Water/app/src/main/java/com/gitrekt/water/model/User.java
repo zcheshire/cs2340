@@ -8,7 +8,7 @@ public class User {
     private String userName;
     private String passWord;
     private UserType userType;
-    private String userTypee;
+    public String userTypee;
 
     public User(String userName, String passWord, UserType userType) {
         this.userName = userName;
@@ -32,18 +32,18 @@ public class User {
         this.passWord = null;
         this.userType = null;
     }
-
+    //Gets the username of te user
     public String getUserName() {
         return this.userName;
     }
 
-
+    //Gets the userType of the user
     public UserType getUserType() {
 
         return this.userType;
 
     }
-
+    //Sets the userType for the user
     public void setUserType(UserType userType) {
 
         this.userType = userType;
@@ -51,19 +51,19 @@ public class User {
     }
 
 
-
+    //Sets the username for the user
     public void setUserName(String userName) {
         this.userName = userName;
     }
-
+    //Gets the password for the user
     public String getPassWord() {
         return passWord;
     }
-
+    //Sets the password for the user
     public void setPassWord(String passWord) {
         this.passWord = passWord;
     }
-
+    //Validates the user
     public boolean validate(User user) {
         if (this.getUserName().equals(user.getUserName())) {
             if (this.getPassWord().equals(user.getPassWord())) {

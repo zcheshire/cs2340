@@ -18,7 +18,11 @@ import org.w3c.dom.Text;
 
 import java.util.ArrayList;
 import java.util.List;
+/*
 
+Creates the layout for the listView for Water Reports
+
+ */
 public class ViewReportActivity extends AppCompatActivity {
     private TextView user;
     private TextView type;
