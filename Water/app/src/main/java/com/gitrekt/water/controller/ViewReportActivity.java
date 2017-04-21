@@ -6,7 +6,6 @@ import android.widget.TextView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
-<<<<<<< HEAD
 import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
@@ -16,8 +15,6 @@ import org.w3c.dom.Text;
 import java.util.ArrayList;
 import java.util.List;
 /*
-=======
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
 
 Creates the layout for the listView for Water Reports
 

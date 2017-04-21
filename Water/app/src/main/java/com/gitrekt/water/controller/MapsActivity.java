@@ -110,35 +110,20 @@ public class MapsActivity <T> extends FragmentActivity implements OnMapReadyCall
                     && !itemLat.equals("-1")) {
                 UserReport report = new UserReport(itemId, itemWT, itemWC, itemLoc, itemLon, itemLat);
                 itemIds.add(report);
+                for (UserReport _report: itemIds) {
+                    double longitude = Double.parseDouble(report.getLongitude());
+                    double latitude = Double.parseDouble(report.getLatitude());
+                    LatLng point = new LatLng(longitude, latitude);
+                    googleMap.addMarker(new MarkerOptions().position(point).title(report.getWt().toString() + report.getWc()));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+                    googleMap.addMarker(new MarkerOptions().position(point).title(report.getWt() + report.getWc()));
+                    googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+                }
             }
         }
         cursor.close();
-        findReports(itemIds);
         //Loops through reports and adds them to the mapView
     }
-    /*
 
-    Finds reports to display on the map
-    @param itemIds list of UserReports
-    @return boolean wether reports were added or not
-
-     */
-    public boolean findReports (ArrayList<UserReport> itemIds) {
-
-        for (UserReport report: itemIds) {
-            double longitude = Double.parseDouble(report.getLongitude());
-            double latitude = Double.parseDouble(report.getLatitude());
-            LatLng point = new LatLng(longitude, latitude);
-<<<<<<< HEAD
-            mMap.addMarker(new MarkerOptions().position(point).title(report.getWt().toString() + report.getWc()));
-            mMap.moveCamera(CameraUpdateFactory.newLatLng(point));
-            return true;
-=======
-            googleMap.addMarker(new MarkerOptions().position(point).title(report.getWt() + report.getWc()));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
-        }
-        return false;
-    }
 
 }

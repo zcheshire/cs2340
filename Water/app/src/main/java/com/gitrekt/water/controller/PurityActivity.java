@@ -55,19 +55,16 @@ public class PurityActivity extends AppCompatActivity {
         conditionSpinner.setAdapter(waterConditionAdapter);
 
     }
-<<<<<<< HEAD
 /*
 Submits user report to the db
 @param v the current view
  */
-=======
 
     /**
      * Button that a user presses to submit a report once prompted to fill
      * in information needed for a user report
      * @param v
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public void submitReport(View v) {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Calendar calobj = Calendar.getInstance();

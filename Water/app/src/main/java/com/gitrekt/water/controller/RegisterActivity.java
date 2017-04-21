@@ -66,18 +66,15 @@ public class RegisterActivity <T> extends AppCompatActivity {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
     }
-<<<<<<< HEAD
 /*
 * registers a new user if the username is not taken
 * @param view current view
 */
-=======
 
     /**
      * Registers a new user if the username is not taken
      * @param view current view
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public void performRegister(View view) {
         //Create a new user from the username and password fields
         User _user = new User(emailRegisterField.getText().toString(),
@@ -176,20 +173,17 @@ public class RegisterActivity <T> extends AppCompatActivity {
 
 
     }
-<<<<<<< HEAD
     /*
     Checks if the username is already taken
     @param itemIds list of usernames from db
     @param _user the name to be checked
     @return boolean whether the username already exists or not
-=======
 
     /**
      * Checks to make sure the user doesn't already exist
      * @param itemIds
      * @param _user
      * @return boolean
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
      */
     public boolean checkUser(List<String> itemIds, String _user) {
         boolean bool = true;

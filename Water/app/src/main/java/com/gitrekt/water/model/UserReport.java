@@ -64,45 +64,36 @@ public class UserReport {
         return this.user;
 
     }
-<<<<<<< HEAD
     //Gets the username in String
 
-=======
 
     /**
      * Gets user that made the report
      * @return String user
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getUserr () {
 
         return this.userr;
 
     }
-<<<<<<< HEAD
     //Gets the water condition in String
-=======
 
     /**
      * Gets the condition type
      * @return String condition
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getWc () {
 
         return this.conditionTypee;
 
     }
-<<<<<<< HEAD
     //Gets the water type in String
 
-=======
 
     /**
      * Gets the water type
      * @return String water type
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getWt () {
 
         return this.waterTypee;
@@ -146,28 +137,22 @@ public class UserReport {
         return this.location;
 
     }
-<<<<<<< HEAD
     //Gets the Longitude
-=======
 
     /**
      * Gets longitude of the water that was reported
      * @return String longitude
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getLongitude () {
 
         return this.longitude;
     }
-<<<<<<< HEAD
     //Gets the latitude
-=======
 
     /**
      * Gets latitude of the water that was reported
      * @return String latitude
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getLatitude () {
 
         return this.latitude;

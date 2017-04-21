@@ -77,11 +77,7 @@
         android:onClick="viewQualityReport"/>
 
     <Button
-<<<<<<< HEAD
-        android:text="History"
-=======
         android:text="@string/button"
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/history"

@@ -16,12 +16,7 @@ public class QualityReport {
     private final String latitude;
     private Calendar date;
     //double time;
-<<<<<<< HEAD
-    String virusPPM;
-    String contaminantPPM;
-    static int reportNumber;
     //Constructor
-=======
     private final String virusPPM;
     private final String contaminantPPM;
     private static int reportNumber;
@@ -37,7 +32,6 @@ public class QualityReport {
      * @param virusPPM
      * @param contaminantPPM
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public QualityReport (User user, OverallCondition overallCondition, String location, String longitude, String latitude,
                        Calendar date, String virusPPM, String contaminantPPM) {
         this.user = user;
@@ -51,15 +45,12 @@ public class QualityReport {
         this.contaminantPPM = contaminantPPM;
         reportNumber = reportNumber + 1;
     }
-<<<<<<< HEAD
     //Constructor for a username and not type
-=======
 
     /**
      * Auto generates a report ID
      * @return String report number
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public QualityReport (String user, String overallCondition, String location, String longitude, String latitude, String virusPPM, String contaminantPPM) {
         this.userr = user;
         this.overallConditionn = overallCondition;
@@ -111,42 +102,33 @@ public class QualityReport {
         return this.location;
 
     }
-<<<<<<< HEAD
     //Gets longitude of the report
-=======
 
     /**
      * Gets longitude of the water that was reported
      * @return String longitude
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getLongitude () {
 
         return this.longitude;
     }
-<<<<<<< HEAD
     //Gets latitude of the report
 
-=======
 
     /**
      * Gets latitude of the water that was reported
      * @return String latitude
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getLatitude () {
 
         return this.latitude;
     }
-<<<<<<< HEAD
     //Gets the date for the report
-=======
 
     /**
      * Gets the date that the water was reported
      * @return Calender date
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public Calendar getDate () {
 
         return this.date;
@@ -162,29 +144,23 @@ public class QualityReport {
         return this.time;
 
     }*/
-<<<<<<< HEAD
     //Gets the virus PPM for the report
-=======
 
     /**
      * Gets the Virus PPM of the water reported
      * @return String virus ppm
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getVirusPPM () {
 
         return this.virusPPM;
 
     }
-<<<<<<< HEAD
     //Gets the contaminant PPM for the report
-=======
 
     /**
      * Gets the Containment PPM of the water reported
      * @return String containment ppm
      */
->>>>>>> 2aa37df7640bed18e7c9d8a1d44653d4ce49edc5
     public String getContaminantPPM () {
 
         return this.contaminantPPM;
