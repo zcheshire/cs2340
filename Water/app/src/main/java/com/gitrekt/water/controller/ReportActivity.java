@@ -1,6 +1,7 @@
 package com.gitrekt.water.controller;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -55,10 +56,6 @@ public class ReportActivity extends AppCompatActivity {
 
         conditionSpinner.setAdapter(waterConditionAdapter);
     }
-/*Sends the report to the database
-@param v the view
-
- */
 
     /**
      * Sends the report data to the model
@@ -69,27 +66,9 @@ public class ReportActivity extends AppCompatActivity {
                 (WaterType) typeSpinner.getSelectedItem(),
                 (ConditionType) conditionSpinner.getSelectedItem(),
                 locationField.getText().toString(), longitudeField.getText().toString(), latitudeField.getText().toString());
-        //model.addUserReport(_report);
 
-        // Gets the data repository in write mode
-        SQLiteDatabase data = mDbHelper.getWritableDatabase();
+        model.addUserReportToDB(this, _report);
 
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WT, typeSpinner.getSelectedItem().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, conditionSpinner.getSelectedItem().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, "-1");
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LON, longitudeField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LAT, latitudeField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LOC, locationField.getText().toString());
-
-
-
-// Insert the new row, returning the primary key value of the new row
-        long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
-        //model.addUserReport(_report);
         //Intent intent = new Intent(this, ViewReportActivity.class);
         //startActivity(intent);
         finish();

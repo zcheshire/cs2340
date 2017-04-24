@@ -81,70 +81,18 @@ public class RegisterActivity <T> extends AppCompatActivity {
                 passwordRegisterField.getText().toString(),
                 (UserType) selectedType.getSelectedItem());
 
+        System.out.println("GGGG");
+        ArrayList<User> userList = model.getUsersFromDB(this);
+        System.out.println("GGGG");
 
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
+        if (!model.validateUser(userList, _user)) {
 
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
-        String[] projection = {
-                UserReaderContract.FeedEntry._ID,
-                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME,
-                UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD
-        };
+            System.out.println("AAAA");
+            model.addUserToDB(this, _user);
+            System.out.println("AAAA");
 
-// Filter results WHERE "username" is anything
-        String selection = UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " = ?";
-// How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " DESC";
-//Query the db using a cursor
-        Cursor cursor = db.query(
-                UserReaderContract.FeedEntry.TABLE_NAME,  // The table to query
-                projection,                               // The columns to return
-                null,//"",//selection,                    // The columns for the WHERE clause
-                null,//selectionArgs,                     // The values for the WHERE clause
-                null,                                     // don't group the rows
-                null,                                     // don't filter by row groups
-                sortOrder                                 // The sort order
-        );
-        List<String> itemIds = new ArrayList<>();
-        //Grabs usernames from the db and add them to the itemIDS arrayList
-        while (cursor.moveToNext()) {
-            String itemId = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME));
-
-            itemIds.add(itemId);
-        }
-        cursor.close();
-        if (checkUser(itemIds, emailRegisterField.getText().toString())) {
-
-
-            //Loops to see if the username is already in the db
-
-
-            //If username does not already exist, then the user is added to User List
-
-            // Gets the data repository in write mode
-            SQLiteDatabase data = mDbHelper.getWritableDatabase();
-
-// Create a new map of values, where column names are the keys
-            ContentValues values = new ContentValues();
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, emailRegisterField.getText().toString());
-
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, passwordRegisterField.getText().toString());
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WT, "");
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, "");
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, "-1");
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_ADMIN, selectedType.getSelectedItem().toString());
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LON, "-1");
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LAT, "");
-            values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LOC, "");
-
-// Insert the new row, returning the primary key value of the new row
-            long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
-            //Move on to the Home Screen once logged in
-            model.addUser(_user);
             model.setCurrentUser(_user);
+
             Intent intent = new Intent(this, HomeActivity.class);
             startActivity(intent);
         } else {
@@ -164,7 +112,6 @@ public class RegisterActivity <T> extends AppCompatActivity {
             emailRegisterField.setText("");
             passwordRegisterField.setText("");
             return;
-
         }
 
         //If they return from HomeActivity (Logout),
@@ -172,30 +119,6 @@ public class RegisterActivity <T> extends AppCompatActivity {
         finish();
 
 
-    }
-    /*
-    Checks if the username is already taken
-    @param itemIds list of usernames from db
-    @param _user the name to be checked
-    @return boolean whether the username already exists or not
-
-    /**
-     * Checks to make sure the user doesn't already exist
-     * @param itemIds
-     * @param _user
-     * @return boolean
-     */
-    public boolean checkUser(List<String> itemIds, String _user) {
-        boolean bool = true;
-        for (String u : itemIds) {
-            if (_user.equals(u)) {
-                return false;
-                //If username is taken, then notify user
-
-
-            }
-        }
-        return true;
     }
 }
 

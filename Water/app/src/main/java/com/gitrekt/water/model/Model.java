@@ -1,5 +1,14 @@
 package com.gitrekt.water.model;
 
+import android.content.Context;
+import android.database.Cursor;
+import android.database.sqlite.SQLiteDatabase;
+
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.MarkerOptions;
+
 import java.util.ArrayList;
 
 /**
@@ -7,16 +16,19 @@ import java.util.ArrayList;
  */
 
 public class Model {
+    //Constructor
+    public Model() {
+        this.database = new com.gitrekt.water.model.SQLiteDatabase();
+    }
+
     /** Singleton instance */
     private static final Model _instance = new Model();
     public static Model getInstance() { return _instance; }
 
     private User currentUser;
     private String searchType;
-    private final ArrayList<User> userList = new ArrayList<>();
-    private ArrayList<UserReport> userReports = new ArrayList<>();
-    private final ArrayList<QualityReport> qualityReports = new ArrayList<>();
 
+    private Database database;
     /**
      * Returns current user
      * @return User user
@@ -33,29 +45,6 @@ public class Model {
         this.currentUser = user;
     }
 
-    /**
-     * Adds a user to the user list
-     * @param user
-     */
-    public void addUser(User user) {
-        this.userList.add(user);
-    }
-
-    /**
-     * removes user from a list
-     * @param user
-     */
-    public void removeUser(User user) {
-        this.userList.remove(user);
-    }
-
-    /**
-     * Gets the user array
-     * @return Array of Users
-     */
-    public ArrayList<User> getUserList() {
-        return this.userList;
-    }
     //defines type to search for water reports
     public void setSearchType (String search) {
 
@@ -65,45 +54,105 @@ public class Model {
 
         return this.searchType;
     }
+
+    /**
+     * Adds a user to the user list
+     * @param user
+     */
+    public void addUserToDB(Context context, User user){
+        database.setContext(context);
+        try {
+            database.insertUser(user);
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
+    }
     //adds a user report to the user report list
     //Gets the Quality Reports
     /**
      * Adds a user report to the user report list
      * @param ur
      */
-    public void addUserReport(UserReport ur) {
-        this.userReports.add(ur);
+    public void addUserReportToDB(Context context, UserReport ur){
+        database.setContext(context);
+        try {
+            database.insertUR(ur, getCurrentUser());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
      * Adds a quality report to the quality report list
      * @param qr
      */
-    public void addQualityReport(QualityReport qr) {
-        this.qualityReports.add(qr);
+    public void addQualityReportToDB(Context context, QualityReport qr){
+        database.setContext(context);
+        try {
+            database.insertQR(qr, getCurrentUser());
+        } catch (Exception e) {
+            System.out.println(e.toString());
+        }
     }
 
     /**
      * Gets the user report array
      * @return Array of user reports
      */
-    public ArrayList<UserReport> getUserReports() {
-        return this.userReports;
+    public ArrayList<UserReport> getUserReportsFromDB(Context context) {
+        database.setContext(context);
+        ArrayList<UserReport> URs = database.getURs();
+        return URs;
     }
 
     /**
      * Sets the user report array to an existing array
      * @param arr
      */
-    public void setUserReports(ArrayList<UserReport> arr) {
+    /*public void setUserReports(ArrayList<UserReport> arr) {
         this.userReports = arr;
-    }
+    }*/
 
     /**
      * Gets the quality report array
      * @return Array of quality reports
      */
-    public ArrayList<QualityReport> getQualityReports() {
-        return this.qualityReports;
+    public ArrayList<QualityReport> getQualityReportsFromDB(Context context) {
+        database.setContext(context);
+        ArrayList<QualityReport> QRs = database.getQRs();
+        return QRs;
+    }
+
+    public ArrayList<User> getUsersFromDB(Context context) {
+        database.setContext(context);
+        ArrayList<User> result = database.getUsers();
+        return result;
+    }
+
+    public void initializeMap(Context context, GoogleMap googleMap) {
+        ArrayList<UserReport> URs = this.getUserReportsFromDB(context);
+
+        //Iterate through UserReports and create points on the map
+        for (UserReport _report: URs) {
+            double longitude = Double.parseDouble(_report.getLongitude());
+            double latitude = Double.parseDouble(_report.getLatitude());
+            LatLng point = new LatLng(longitude, latitude);
+            googleMap.addMarker(new MarkerOptions().position(point).title(_report.getWt() + _report.getWc()));
+            googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+        }
+    }
+
+    public void resetDatabase(Context context) {
+        database.setContext(context);
+        database.reset();
+    }
+
+    public boolean validateUser(ArrayList<User> users, User user) {
+        for (User u : users) {
+            if (user.validate(u)) { //Return true if there is a match
+                return true;
+            }
+        }
+        return false;
     }
 }

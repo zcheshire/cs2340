@@ -76,7 +76,7 @@ public class SettingsActivity <T> extends AppCompatActivity {
     public void performEdit(View view) {
         User _user = model.getCurrentUser();
 
-        ArrayList<User> uList = model.getUserList();
+        ArrayList<User> uList = model.getUsersFromDB(this);
 
         String pass = passwordField.getText().toString();
         String check = emailField.getText().toString();
@@ -102,13 +102,13 @@ public class SettingsActivity <T> extends AppCompatActivity {
         } else {
 
 
-            model.removeUser(_user);
+            //model.removeUser(_user);
 
             _user = new User(check, pass, model.getCurrentUser().getUserType());
             model.setCurrentUser(_user);
             emailField.setText(_user.getUserName());
             passwordField.setText(_user.getPassWord());
-            model.addUser(_user);
+            model.addUserToDB(this, _user);
             textView5.setText("Username Changed to " + _user.getUserName() + " and profile has been updated.");
             //System.out.print("Username Changed!");
         }

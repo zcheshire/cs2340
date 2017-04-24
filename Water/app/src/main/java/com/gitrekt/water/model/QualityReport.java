@@ -1,20 +1,20 @@
 package com.gitrekt.water.model;
 
 import java.util.Calendar;
+import java.util.Date;
 
 /**
  * Created by zacharycheshire on 3/12/17.
  */
 
 public class QualityReport {
-    private User user;
-   public String userr;
+    private String username;
     private OverallCondition overallCondition;
     private final String location;
-   public String overallConditionn;
+    public String overallConditionn;
     private final String longitude;
     private final String latitude;
-    private Calendar date;
+    private Date date;
     //double time;
     //Constructor
     private final String virusPPM;
@@ -23,7 +23,7 @@ public class QualityReport {
 
     /**
      * Generates a quality report object
-     * @param user
+     * @param username
      * @param overallCondition
      * @param location
      * @param longitude
@@ -32,9 +32,9 @@ public class QualityReport {
      * @param virusPPM
      * @param contaminantPPM
      */
-    public QualityReport (User user, OverallCondition overallCondition, String location, String longitude, String latitude,
-                       Calendar date, String virusPPM, String contaminantPPM) {
-        this.user = user;
+    public QualityReport (String username, OverallCondition overallCondition, String location, String longitude, String latitude,
+                       Date date, String virusPPM, String contaminantPPM) {
+        this.username = username;
         this.overallCondition = overallCondition;
         this.location = location;
         this.longitude = longitude;
@@ -48,30 +48,11 @@ public class QualityReport {
     //Constructor for a username and not type
 
     /**
-     * Auto generates a report ID
-     * @return String report number
-     */
-    public QualityReport (String user, String overallCondition, String location, String longitude, String latitude, String virusPPM, String contaminantPPM) {
-        this.userr = user;
-        this.overallConditionn = overallCondition;
-        this.location = location;
-        this.longitude = longitude;
-        this.latitude = latitude;
-       // this.date = date;
-        //this.time = time;
-        this.virusPPM = virusPPM;
-        this.contaminantPPM = contaminantPPM;
-        reportNumber = reportNumber + 1;
-    }
-
-    /**
      * Gets user that made the report
      * @return User user
      */
-    public User getUser () {
-
-        return this.user;
-
+    public String getUsername () {
+        return this.username;
     }
 
     /**
@@ -129,7 +110,7 @@ public class QualityReport {
      * Gets the date that the water was reported
      * @return Calender date
      */
-    public Calendar getDate () {
+    public Date getDate () {
 
         return this.date;
 

@@ -6,11 +6,13 @@ import android.os.Bundle;
 import android.view.View;
 
 import com.gitrekt.water.R;
+import com.gitrekt.water.model.Model;
 
 public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        //Model.getInstance().resetDatabase(this);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
     }

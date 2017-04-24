@@ -34,14 +34,12 @@ public class ViewReportActivity extends AppCompatActivity {
         TextView location = (TextView) findViewById(R.id.location);
         TextView postID = (TextView) findViewById(R.id.postID);
 
-        user.setText(model.getUserReports().get(0).getUser().getUserName());
-        condition.setText(model.getUserReports().get(0).getCondition().toString());
-        type.setText(model.getUserReports().get(0).getType().toString());
-        location.setText(model.getUserReports().get(0).getLocation());
-        postID.setText(model.getUserReports().get(0).getReportNumber());
+        UserReport ur = model.getUserReportsFromDB(this).get(0);
 
-
-
-
+        user.setText(ur.getUser().getUserName());
+        condition.setText(ur.getCondition().toString());
+        type.setText(ur.getType().toString());
+        location.setText(ur.getLocation());
+        postID.setText(ur.getReportNumber());
     }
 }

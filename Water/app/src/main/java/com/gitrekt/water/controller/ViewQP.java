@@ -6,6 +6,7 @@ import android.widget.TextView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
+import com.gitrekt.water.model.QualityReport;
 
 public class ViewQP extends AppCompatActivity {
     @Override
@@ -20,12 +21,14 @@ public class ViewQP extends AppCompatActivity {
         TextView location = (TextView) findViewById(R.id.location);
         TextView postID = (TextView) findViewById(R.id.postID);
 
-        user.setText(model.getQualityReports().get(0).getUser().getUserName());
-        condition.setText(model.getQualityReports().get(0).getCondition().toString());
-        virus.setText(model.getQualityReports().get(0).getVirusPPM());
-        contaminant.setText(model.getQualityReports().get(0).getContaminantPPM());
-        location.setText(model.getQualityReports().get(0).getLocation());
-        postID.setText(model.getQualityReports().get(0).getReportNumber());
+        QualityReport qr = model.getQualityReportsFromDB(this).get(0);
+
+        user.setText(qr.getUsername());
+        condition.setText(qr.getCondition().toString());
+        virus.setText(qr.getVirusPPM());
+        contaminant.setText(qr.getContaminantPPM());
+        location.setText(qr.getLocation());
+        postID.setText(qr.getReportNumber());
     }
 
 }

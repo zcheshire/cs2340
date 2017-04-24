@@ -1,0 +1,42 @@
+{
+  "project_info": {
+    "project_number": "1086066390346",
+    "firebase_url": "https://cs2340-water.firebaseio.com",
+    "project_id": "cs2340-water",
+    "storage_bucket": "cs2340-water.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1086066390346:android:d73e791285e2f8f7",
+        "android_client_info": {
+          "package_name": "com.gitrekt.water"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1086066390346-jjphaq5i2hc3e504u1qv462ubb5a70qs.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDBFoW_UUEuhXSTFQLAPZhYmNYI94Hb9k0"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 1,
+          "other_platform_oauth_client": []
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

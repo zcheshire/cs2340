@@ -27,73 +27,16 @@ public class ViewQualityReportActivity extends AppCompatActivity {
         setContentView(R.layout.activity_view_quality_report);
         model = Model.getInstance();
         lv = (ListView) findViewById(R.id.qualityReportView);
-        //adapter = new QualityReportAdapter(getApplicationContext(), model.getQualityReports());
-        adapter = new QualityReportAdapter(getApplicationContext(), model.getQualityReports());
+        adapter = new QualityReportAdapter(getApplicationContext(), model.getQualityReportsFromDB(this));
         lv.setAdapter(adapter);
     }
+
     /*
     Automatically loads the quality reports into the view upon resume
-
      */
     protected void onResume() {
         super.onRestart();
-        SQLiteDatabase db = mDbHelper.getReadableDatabase();
-
-// Define a projection that specifies which columns from the database
-// you will actually use after this query.
-        String[] projection = {
-                UserReaderContract.FeedEntry._ID,
-                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME,
-                UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD,
-                UserReaderContract.FeedEntry.COLUMN_NAME_VPPM,
-                UserReaderContract.FeedEntry.COLUMN_NAME_CPPM,
-                UserReaderContract.FeedEntry.COLUMN_NAME_WC,
-                UserReaderContract.FeedEntry.COLUMN_NAME_LON,
-                UserReaderContract.FeedEntry.COLUMN_NAME_LAT,
-                UserReaderContract.FeedEntry.COLUMN_NAME_LOC
-        };
-
-// Filter results WHERE "username" is anything
-        String selection = UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " = ?";
-// How you want the results sorted in the resulting Cursor
-        String sortOrder =
-                UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME + " DESC";
-//Query the db using a cursor
-        Cursor cursor = db.query(
-                UserReaderContract.FeedEntry.TABLE_NAME,  // The table to query
-                projection,                               // The columns to return
-                null,//"",//selection,                    // The columns for the WHERE clause
-                null,//selectionArgs,                     // The values for the WHERE clause
-                null,                                     // don't group the rows
-                null,                                     // don't filter by row groups
-                sortOrder                                 // The sort order
-        );
-        ArrayList<QualityReport> itemIds = new ArrayList<>();
-        //Grabs usernames from the db and add them to the itemIDS arrayList
-        model.setUserReports(null);
-        while (cursor.moveToNext()) {
-            String itemId = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME));
-            String itemVP = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM));
-            String itemCP = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_CPPM));
-            String itemWC = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_WC));
-            String itemLon = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LON));
-            String itemLat = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LAT));
-            String itemLoc = cursor.getString(
-                    cursor.getColumnIndexOrThrow(UserReaderContract.FeedEntry.COLUMN_NAME_LOC));
-            if (!itemVP.equals("-1")) {
-                QualityReport report = new QualityReport(itemId, itemWC, itemLoc, itemLon, itemLat, itemVP, itemCP);
-                itemIds.add(report);
-            }
-        }
-        cursor.close();
-
-        adapter = new QualityReportAdapter(getApplicationContext(), itemIds);
+        adapter = new QualityReportAdapter(getApplicationContext(), model.getQualityReportsFromDB(this));
         lv.setAdapter(adapter);
 
     }
@@ -103,8 +46,6 @@ public class ViewQualityReportActivity extends AppCompatActivity {
      * @param view
      */
     public void cancel (View view) {
-
         this.onBackPressed();
-
     }
 }

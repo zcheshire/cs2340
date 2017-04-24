@@ -68,34 +68,15 @@ Submits user report to the db
     public void submitReport(View v) {
         DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
         Calendar calobj = Calendar.getInstance();
-        System.out.println(df.format(calobj.getTime()));
+        //System.out.println(df.format(calobj.getTime()));
 
-        QualityReport _report = new QualityReport(model.getCurrentUser(),
+        QualityReport _report = new QualityReport(model.getCurrentUser().getUserName(),
                 (OverallCondition) conditionSpinner.getSelectedItem(),
                 locationField.getText().toString(), longitudeField.getText().toString(), latitudeField.getText().toString(),
-        calobj, virusField.getText().toString(), contaminantField.getText().toString());
-        model.addQualityReport(_report);
-        // Gets the data repository in write mode
-        SQLiteDatabase data = mDbHelper.getWritableDatabase();
+                calobj.getTime(), virusField.getText().toString(), contaminantField.getText().toString());
 
-// Create a new map of values, where column names are the keys
-        ContentValues values = new ContentValues();
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_USERNAME, model.getCurrentUser().getUserName());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_PASSWORD, model.getCurrentUser().getPassWord());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_VPPM, virusField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_CPPM, contaminantField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_WC, conditionSpinner.getSelectedItem().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LON, longitudeField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LAT, latitudeField.getText().toString());
-        values.put(UserReaderContract.FeedEntry.COLUMN_NAME_LOC, locationField.getText().toString());
+        model.addQualityReportToDB(this, _report);
 
-
-
-// Insert the new row, returning the primary key value of the new row
-        long newRowId = data.insert(UserReaderContract.FeedEntry.TABLE_NAME, null, values);
-        //model.addQualityReport(_report);
-        //Intent intent = new Intent(this, ViewReportActivity.class);
-        //startActivity(intent);
         finish();
     }
 

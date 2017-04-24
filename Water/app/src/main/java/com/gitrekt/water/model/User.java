@@ -8,7 +8,6 @@ public class User {
     private String userName;
     private String passWord;
     private UserType userType;
-    public String userTypee;
 
 
     /**
@@ -21,16 +20,6 @@ public class User {
         this.userName = userName;
         this.passWord = passWord;
         this.userType = userType;
-    }
-
-    /**
-     * Creates a user object for database
-     * @param userName
-     * @param passWord
-     */
-    public User(String userName, String passWord, String userType) {
-        this.userName = userName;
-        this.passWord = passWord;
     }
 
     /**

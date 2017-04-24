@@ -34,6 +34,7 @@ public final class UserReaderContract {
         public static final String COLUMN_NAME_CPPM = "contaminant";
         public static final String COLUMN_NAME_LAT = "latitude";
         public static final String COLUMN_NAME_LOC = "location";
+        public static final String COLUMN_NAME_DATE = "date";
 
     }
     /*
@@ -52,7 +53,8 @@ public final class UserReaderContract {
                     FeedEntry.COLUMN_NAME_VPPM + " TEXT, " +
                     FeedEntry.COLUMN_NAME_CPPM + " TEXT, " +
                     FeedEntry.COLUMN_NAME_LAT + " TEXT, " +
-                    FeedEntry.COLUMN_NAME_LOC + " TEXT" + ")";
+                    FeedEntry.COLUMN_NAME_LOC + " TEXT" +
+                    FeedEntry.COLUMN_NAME_LOC + "TEXT)";
 
 
     public static final String SQL_DELETE_ENTRIES =
