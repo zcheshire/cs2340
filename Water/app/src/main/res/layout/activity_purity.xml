@@ -81,7 +81,7 @@
         android:layout_height="wrap_content"
         android:id="@+id/cancelButton"
         android:background="@color/clear"
-        android:onClick=""
+        android:onClick="cancel"
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"

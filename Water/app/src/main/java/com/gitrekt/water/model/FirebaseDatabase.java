@@ -95,17 +95,17 @@ public class FirebaseDatabase implements Database {
                     System.out.println(qr.getValue());
 
                     //Workaround since Firebase doesn't support enums
-                    DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
-                    Date parsedDate = new Date();
-                    try {
-                        parsedDate = df.parse((String) qr.child("date").getValue());
+                    //DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+                    Date parsedDate = qr.child("date").getValue(Date.class);//new Date();
+                    /*try {
+                        parsedDate = df.parse((String) qr.child("date").getValue(Date.class));
                     } catch (Exception e) {
                         System.out.println("Error parsing date for QR");
-                    }
+                    }*/
 
                     QualityReport qualityReport
                             = new QualityReport((String) qr.child("username").getValue(),
-                            OverallCondition.valueOf((String) qr.child("overallCondition").getValue()),
+                            OverallCondition.valueOf((String) qr.child("condition").getValue()),
                             (String) qr.child("location").getValue(),
                             (String) qr.child("longitude").getValue(),
                             (String) qr.child("latitude").getValue(),
@@ -116,6 +116,7 @@ public class FirebaseDatabase implements Database {
                     qrs.add(qualityReport);
                 }
             }
+
             public void onCancelled(DatabaseError de) { }
         });
         urReference.addValueEventListener(new ValueEventListener(){
@@ -127,12 +128,12 @@ public class FirebaseDatabase implements Database {
                     //Workaround since Firebase doesn't support enums
                     UserReport userReport
                             = new UserReport((String) ur.child("username").getValue(),
-                            WaterType.valueOf((String) ur.child("waterType").getValue()),
-                            ConditionType.valueOf((String) ur.child("conditionType").getValue()),
+                            WaterType.valueOf((String) ur.child("type").getValue()),
+                            ConditionType.valueOf((String) ur.child("condition").getValue()),
                             (String) ur.child("location").getValue(),
                             (String) ur.child("longitude").getValue(),
                             (String) ur.child("latitude").getValue());
-                    urs.add(ur.getValue(UserReport.class));
+                    urs.add(userReport);
                 }
             }
             public void onCancelled(DatabaseError de) { }
@@ -152,10 +153,10 @@ public class FirebaseDatabase implements Database {
         userReference.child(user.getUserName()).setValue(user);
     }
     public void insertQR(QualityReport qr, User currentUser){
-        qrReference.child(qr.toString()).setValue(qr);
+        qrReference.child(Integer.toString(qr.hashCode())).setValue(qr);
     }
     public void insertUR(UserReport ur, User currentUser){
-        urReference.child(ur.toString()).setValue(ur);
+        urReference.child(Integer.toString(ur.hashCode())).setValue(ur);
     }
 
     public ArrayList<User> getUsers(){

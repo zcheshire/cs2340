@@ -74,7 +74,7 @@ public class ReportActivity extends AppCompatActivity {
         finish();
     }
 
-    void cancelReport(View v) {
+    void cancel(View v) {
         finish();
     }
 
