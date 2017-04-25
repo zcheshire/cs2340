@@ -79,8 +79,7 @@
         android:id="@+id/conditionSpinner"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:textColorHint=/>
+        android:layout_alignParentStart="true"/>
 
     <TextView
         android:text="@string/water_type2"
