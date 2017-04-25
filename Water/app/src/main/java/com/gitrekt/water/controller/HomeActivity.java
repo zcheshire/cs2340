@@ -25,7 +25,6 @@ import java.util.Objects;
 public class HomeActivity <T> extends AppCompatActivity {
 
     private Model model;
-    private Handler mHandler = new Handler();
 
     private TextView loginMessage;
     private Button logoutButton;
@@ -40,7 +39,7 @@ public class HomeActivity <T> extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
+        model = Model.getInstance();
         loginMessage = (TextView) findViewById(R.id.loginMessage);
 
         logoutButton = (Button) findViewById(R.id.logoutButton);
