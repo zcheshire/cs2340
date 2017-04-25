@@ -51,6 +51,7 @@
             android:label="@string/title_activity_view_qp"
             android:theme="@style/AppTheme" />
         <activity android:name=".controller.WaterReportHistory" />
+        <activity android:name=".controller.MenuActivity"></activity>
     </application>
 
 </manifest>
