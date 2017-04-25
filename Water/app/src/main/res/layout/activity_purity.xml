@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.PurityActivity">
 
     <EditText
@@ -19,7 +20,8 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/locationField"
-        android:hint="Location" />
+        android:hint="Location"
+        android:textColor="@color/white"/>
 
     <EditText
         android:layout_width="wrap_content"
@@ -30,6 +32,7 @@
         android:layout_alignRight="@+id/locationField"
         android:layout_alignEnd="@+id/locationField"
         android:id="@+id/longitudeField"
+        android:textColor="@color/white"
         android:hint="Longitude" />
 
     <EditText
@@ -41,6 +44,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/latitudeField"
+        android:textColor="@color/white"
         android:hint="Latitude" />
 
     <EditText
@@ -52,7 +56,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/virusField"
+        android:textColor="@color/white"
         android:hint="Virus PPM" />
+
 
     <EditText
         android:layout_width="wrap_content"
@@ -63,6 +69,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/contaminantField"
+        android:textColor="@color/white"
         android:hint="Contaminant PPM" />
 
     <TextView
@@ -73,6 +80,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:layout_marginTop="30dp"
+        android:textColor="@color/white"
         android:id="@+id/textView10" />
 
     <Spinner
@@ -92,6 +100,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:id="@+id/submitReport"
+        android:background="@color/teal"
         android:onClick="submitReport"/>
 
     <Button
@@ -102,6 +111,7 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:id="@+id/cancelButton"
+        android:background="@color/teal"
         android:onClick="cancel"/>
 
 </RelativeLayout>

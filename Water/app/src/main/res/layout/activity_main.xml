@@ -9,19 +9,7 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="com.gitrekt.water.controller.MainActivity"
     android:layout_width="match_parent"
-    android:background="@drawable/water">
-
-    <Button
-        android:text="@string/register1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/registerButton"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="21dp"
-        style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:onClick="register" />
+    android:background="@color/gray">
 
     <Button
         android:text="@string/login1"
@@ -33,22 +21,43 @@
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="13dp"
         style="@style/Widget.AppCompat.Button.Borderless"
-        android:textColor="@color/common_google_signin_btn_text_dark_default" />
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:background="@color/teal"/>
 
-    <TextView
-        android:text="@string/water"
+    <Button
+        android:text="@string/register1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:id="@+id/registerButton"
+        style="@style/Widget.AppCompat.Button.Borderless"
+        android:textColor="@color/common_google_signin_btn_text_dark_default"
+        android:onClick="register"
+        android:background="@color/teal"
+        android:layout_alignParentBottom="true"
+        android:layout_alignLeft="@+id/loginButton"
+        android:layout_alignStart="@+id/loginButton" />
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/logo"
+        android:layout_marginTop = "300dp"
+        android:layout_marginLeft = "75dp"
+        android:layout_marginRight="75dp"
+        android:layout_marginBottom="50dp"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:paddingTop="200dp"
+        android:paddingLeft="12dp"
+        android:paddingRight="12dp"
+        android:paddingBottom="5dp"/>
+
+    <ImageView
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:src="@drawable/antelope"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="146dp"
-        android:id="@+id/textView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:textAlignment="center"
-        android:textSize="40sp"
-        android:textStyle="normal|bold"
-        android:textColor="@android:color/white"
-        android:textAppearance="@style/TextAppearance.AppCompat.Body1" />
+        android:paddingBottom="200dp"/>
 </RelativeLayout>

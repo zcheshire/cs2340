@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.LoginActivity">
 
     <EditText
@@ -40,6 +41,7 @@
         android:layout_centerHorizontal="true"
         android:layout_marginTop="54dp"
         android:id="@+id/performLoginButton"
+        android:background="@color/teal"
         android:onClick="performLogin" />
 
     <Button
@@ -51,5 +53,6 @@
         android:layout_alignStart="@+id/performLoginButton"
         android:layout_marginTop="49dp"
         android:id="@+id/cancelLoginButton"
+        android:background="@color/teal"
         android:onClick="cancelLogin" />
 </RelativeLayout>
