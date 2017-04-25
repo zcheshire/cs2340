@@ -12,7 +12,7 @@ public class UserReport {
     private final String longitude;
     private final String latitude;
     private static int reportNumber;
-    private String userr;
+    private String username;
     private String waterTypee;
     private String conditionTypee;
 
@@ -47,7 +47,7 @@ public class UserReport {
      */
     public UserReport (String user, String waterType, String conditionType, String location, String longitude, String latitude) {
 
-        this.userr = user;
+        this.username = user;
         this.conditionTypee = conditionType;
         this.waterTypee = waterType;
         this.location = location;
@@ -71,9 +71,9 @@ public class UserReport {
      * Gets user that made the report
      * @return String user
      */
-    public String getUserr () {
+    public String getUsername() {
 
-        return this.userr;
+        return this.username;
 
     }
     //Gets the water condition in String

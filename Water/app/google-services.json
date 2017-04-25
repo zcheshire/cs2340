@@ -15,6 +15,14 @@
       },
       "oauth_client": [
         {
+          "client_id": "1086066390346-ukhtjlvfpkmpiu95ho63k4rlnp8ehvgp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.gitrekt.water",
+            "certificate_hash": "084cb31055a304853ee5cf4b7def9ca204c39d96"
+          }
+        },
+        {
           "client_id": "1086066390346-jjphaq5i2hc3e504u1qv462ubb5a70qs.apps.googleusercontent.com",
           "client_type": 3
         }
@@ -29,8 +37,13 @@
           "status": 1
         },
         "appinvite_service": {
-          "status": 1,
-          "other_platform_oauth_client": []
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1086066390346-jjphaq5i2hc3e504u1qv462ubb5a70qs.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
         },
         "ads_service": {
           "status": 2

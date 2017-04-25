@@ -18,7 +18,8 @@ import java.util.ArrayList;
 public class Model {
     //Constructor
     public Model() {
-        this.database = new com.gitrekt.water.model.SQLiteDatabase();
+        //this.database = new com.gitrekt.water.model.SQLiteDatabase();
+        this.database = new FirebaseDatabase();
     }
 
     /** Singleton instance */

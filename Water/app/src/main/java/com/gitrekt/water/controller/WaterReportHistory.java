@@ -1,8 +1,5 @@
 package com.gitrekt.water.controller;
 
-import android.content.Intent;
-import android.database.Cursor;
-import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -12,11 +9,8 @@ import android.widget.TextView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
-import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
-
-import java.util.ArrayList;
 
 public class WaterReportHistory extends AppCompatActivity {
     private EditText searchField;
@@ -52,7 +46,7 @@ public class WaterReportHistory extends AppCompatActivity {
         model.setSearchType(searchField.getText().toString());
         for (UserReport rep : model.getUserReportsFromDB(this)) {
             if (rep.getLocation().equals(searchField.getText().toString())) {
-                nameShow.setText(rep.getUserr());
+                nameShow.setText(rep.getUsername());
                 locationShow.setText(rep.getLocation());
                 wtShow.setText(rep.getWt());
                 wcShow.setText(rep.getWc());
