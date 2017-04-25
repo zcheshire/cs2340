@@ -21,6 +21,16 @@ public class QualityReport {
     private final String contaminantPPM;
     private static int reportNumber;
 
+    public QualityReport() {
+        this.username = "";
+        this.overallCondition = null;
+        this.location = "";
+        this.longitude = "";
+        this.latitude = "";
+        this.date = null;
+        this.virusPPM = "";
+        this.contaminantPPM = "";
+    }
     /**
      * Generates a quality report object
      * @param username
@@ -40,7 +50,6 @@ public class QualityReport {
         this.longitude = longitude;
         this.latitude = latitude;
         this.date = date;
-        //this.time = time;
         this.virusPPM = virusPPM;
         this.contaminantPPM = contaminantPPM;
         reportNumber = reportNumber + 1;

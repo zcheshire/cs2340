@@ -55,7 +55,15 @@ public class LoginActivity <T> extends AppCompatActivity {
         User _user = new User(emailField.getText().toString(), passwordField.getText().toString());
 
         ArrayList<User> userList = model.getUsersFromDB(this);
-        if (!model.validateUser(userList, _user)) {
+
+        if (model.validateUser(userList, _user)) {
+            //model.setCurrentUser(_user);
+            Intent intent = new Intent(this, HomeActivity.class);
+            startActivity(intent);
+            //If they return from HomeActivity (Logout),
+            //this will return to the parent activity (main activity)
+            finish();
+        } else {
             //If username/pass do not match, create a dialog to let them know
             Context context = view.getContext();
             AlertDialog.Builder builder1 = new AlertDialog.Builder(context);
@@ -70,13 +78,6 @@ public class LoginActivity <T> extends AppCompatActivity {
                     });
             AlertDialog alert11 = builder1.create();
             alert11.show();
-        } else {
-            model.setCurrentUser(_user);
-            Intent intent = new Intent(this, HomeActivity.class);
-            startActivity(intent);
-            //If they return from HomeActivity (Logout),
-            //this will return to the parent activity (main activity)
-            finish();
         }
 
     }

@@ -151,6 +151,7 @@ public class Model {
     public boolean validateUser(ArrayList<User> users, User user) {
         for (User u : users) {
             if (user.validate(u)) { //Return true if there is a match
+                this.setCurrentUser(u);
                 return true;
             }
         }

@@ -282,7 +282,7 @@ public class SQLiteDatabase implements Database {
             //             VPPM = -1 so we know entry is not a QualityReport
             if (itemVP.equals("-1") && !itemLon.equals("-1") && !itemLat.equals("")
                     && !itemLat.equals("-1")) {
-                UserReport report = new UserReport(itemId, itemWT, itemWC, itemLoc, itemLon, itemLat);
+                UserReport report = new UserReport();//itemId, itemWT, itemWC, itemLoc, itemLon, itemLat);
                 URs.add(report);
             }
         }

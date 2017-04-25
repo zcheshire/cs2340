@@ -16,17 +16,25 @@ public class UserReport {
     private String waterTypee;
     private String conditionTypee;
 
+    public UserReport() {
+        this.username = "";
+        this.conditionType = null;
+        this.waterType = null;
+        this.location = "";
+        this.longitude = "";
+        this.latitude = "";
+    }
     /**
      * Creates a user report object
-     * @param user
+     * @param username
      * @param waterType
      * @param conditionType
      * @param location
      * @param longitude
      * @param latitude
      */
-    public UserReport (User user, WaterType waterType,ConditionType conditionType, String location, String longitude, String latitude) {
-        this.user = user;
+    public UserReport (String username, WaterType waterType, ConditionType conditionType, String location, String longitude, String latitude) {
+        this.username = username;
         this.waterType = waterType;
         this.conditionType = conditionType;
         this.location = location;
@@ -45,7 +53,7 @@ public class UserReport {
      * @param longitude
      * @param latitude
      */
-    public UserReport (String user, String waterType, String conditionType, String location, String longitude, String latitude) {
+    /*public UserReport (String user, String waterType, String conditionType, String location, String longitude, String latitude) {
 
         this.username = user;
         this.conditionTypee = conditionType;
@@ -54,7 +62,8 @@ public class UserReport {
         this.latitude = latitude;
         this.longitude = longitude;
 
-    }
+    }*/
+
     /**
      * Gets user that made the report
      * @return User user
