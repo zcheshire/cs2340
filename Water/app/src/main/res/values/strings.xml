@@ -30,7 +30,7 @@
     <string name="water1">Water</string>
     <string name="overall_condition">Overall Condition</string>
     <string name="submit">Submit</string>
-    <string name="cancel1">Cancel</string>
+    <string name="cancel1">BACK</string>
     <string name="please_fill_out_your_desired_information">Please Fill Out Your Desired Information</string>
     <string name="email">Email:</string>
     <string name="password">Password:</string>
@@ -55,8 +55,12 @@
     <string name="location5">Location:</string>
     <string name="virus_ppm3">Virus PPM:</string>
     <string name="contaminant_ppm4">Contaminant PPM:</string>
+    <string name="purityReport">Purity Report</string>
+    <string name="qualityReport">Quality Report</string>
+    <string name="loginscreen">Login</string>
     <string name="id5">ID:</string>
     <color name="gray">#303030</color>
-    <color name="teal">#92CBC5</color>
+    <color name="teal">#92cbc5</color>
     <color name="white">#ffffff</color>
+    <color name="clear">#00ffffff</color>
 </resources>

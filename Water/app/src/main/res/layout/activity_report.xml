@@ -8,50 +8,35 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.ReportActivity">
 
-    <Button
-        android:text="@string/submit1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/darker"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="137dp"
-        android:id="@+id/submitReportButton"
-        android:onClick="submitReport" />
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="500dp"/>
 
     <Button
-        android:text="@string/cancel4"
+        android:text="@string/cancel1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
-        android:layout_alignLeft="@+id/submitReportButton"
-        android:layout_alignStart="@+id/submitReportButton"
-        android:layout_marginBottom="62dp"
-        android:id="@+id/cancelReportButton"
-        android:onClick="cancelReport" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:id="@+id/locationField"
-        android:hint="@string/location2"
+        android:id="@+id/cancelButton"
+        android:background="@color/clear"
+        android:onClick=""
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_below="@+id/locationField"
-        android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/longitudeField"
-        android:hint="longitude" />
+        android:textColor="@color/white"
+        android:layout_toLeftOf="@+id/locationField"
+        android:layout_toStartOf="@+id/locationField"
+        android:paddingBottom="15dp"
+        android:paddingRight="15dp" />
 
     <TextView
         android:text="@string/water_condition2"
@@ -61,7 +46,9 @@
         android:layout_below="@+id/longitudeField"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="59dp" />
+        android:layout_marginTop="59dp"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -81,7 +68,8 @@
         android:layout_alignRight="@+id/longitudeField"
         android:layout_alignEnd="@+id/longitudeField"
         android:id="@+id/latitudeField"
-        android:hint="Latitude" />
+        android:hint="Latitude"
+        android:textColorHint="@color/white" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -100,5 +88,88 @@
         android:layout_below="@+id/conditionSpinner"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginTop="22dp" />
+        android:layout_marginTop="22dp"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:text="@string/submit"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/submitReport"
+        android:background="@color/teal"
+        android:onClick="submitReport"
+        android:paddingLeft="50dp"
+        android:paddingRight="50dp"
+        android:textSize="18sp"
+        android:layout_marginTop="24dp"
+        android:layout_below="@+id/typeSpinner"
+        android:layout_centerHorizontal="true" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/locationField"
+        android:hint="@string/location2"
+        android:layout_marginTop="58dp"
+        android:layout_below="@+id/cancelButton"
+        android:layout_centerHorizontal="true"
+        android:textColorHint="@color/white" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:id="@+id/longitudeField"
+        android:hint="longitude"
+        android:textColorHint="@color/white"
+        android:layout_below="@+id/locationField"
+        android:layout_alignLeft="@+id/locationField"
+        android:layout_alignStart="@+id/locationField" />
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/corner_bottom_right"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:paddingTop="27dp"
+        android:paddingLeft="250dp"
+        android:paddingRight="68dp"
+        android:paddingBottom="5dp"
+        android:scaleType="fitStart"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true" />
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/corner_top_left"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:paddingTop="25dp"
+        android:paddingLeft="80dp"
+        android:paddingRight="240dp"
+        android:paddingBottom="5dp"
+        android:scaleType="fitStart"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentTop="true" />
+
+    <TextView
+        android:text="TextView"
+        android:layout_height="wrap_content"
+        android:id="@+id/textView"
+        tools:text="@string/qualityReport"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:paddingLeft="85dp"
+        android:paddingTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true" />
 </RelativeLayout>
