@@ -42,6 +42,17 @@
         android:background="@color/teal"/>
 
     <Button
+        android:text="menu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/loginMessage"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:id="@+id/menuButton"
+        android:onClick="goMenu"
+        android:background="@color/teal"/>
+
+    <Button
         android:text="@string/add_qp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -78,17 +89,6 @@
         android:layout_marginLeft="14dp"
         android:layout_marginStart="14dp" />
 
-    <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/reportListView"
-        android:background="@color/white"
-        android:backgroundTint="@color/white"
-        android:paddingTop="5dp"
-        android:divider="@color/cast_expanded_controller_ad_label_background_color"
-        android:layout_below="@+id/settingsButton"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
 
     <Button
         android:text="@string/view_qp"

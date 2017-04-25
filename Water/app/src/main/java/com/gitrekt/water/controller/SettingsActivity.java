@@ -67,6 +67,7 @@ public class SettingsActivity <T> extends AppCompatActivity {
     public void cancelEdit(View view) {
         //Just return to the parent activity (main activity)
         this.onBackPressed();
+        overridePendingTransition(R.animator.hold, R.animator.x_slide_out);
     }
 
     /**

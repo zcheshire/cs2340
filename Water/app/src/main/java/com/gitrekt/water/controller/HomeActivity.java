@@ -10,7 +10,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.ListView;
 
 import com.gitrekt.water.R;
 import com.gitrekt.water.model.Model;
@@ -18,6 +17,7 @@ import com.gitrekt.water.model.UserReaderContract;
 import com.gitrekt.water.model.UserReaderDbHelper;
 import com.gitrekt.water.model.UserReport;
 import com.gitrekt.water.model.UserType;
+import android.os.Handler;
 
 import java.util.ArrayList;
 import java.util.Objects;
@@ -25,6 +25,7 @@ import java.util.Objects;
 public class HomeActivity <T> extends AppCompatActivity {
 
     private Model model;
+    private Handler mHandler = new Handler();
 
     private TextView loginMessage;
     private Button logoutButton;
@@ -33,15 +34,12 @@ public class HomeActivity <T> extends AppCompatActivity {
     private Button reportButton;
     private Button addQuality;
     private Button viewQualityReport;
-    private ListView lv;
     private final UserReaderDbHelper mDbHelper = new UserReaderDbHelper(this);
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
-
-        model = Model.getInstance();
 
         loginMessage = (TextView) findViewById(R.id.loginMessage);
 
@@ -54,24 +52,13 @@ public class HomeActivity <T> extends AppCompatActivity {
         Button reportButton = (Button) findViewById(R.id.reportButton);
         Button addQuality = (Button) findViewById(R.id.addQuality);
         Button viewQualityReport = (Button) findViewById(R.id.viewQualityReport);
-        lv = (ListView) findViewById(R.id.reportListView);
 
         loginMessage.setText("Welcome !");
-        this.onResume();
-    }
-/*
 
-Code to run when the activity resumes
- */
-    protected void onResume() {
-        super.onRestart();
-        /*ArrayList<UserReport> temp = new ArrayList<>();
-        boolean num = getRep(temp);
-        if (num) {*/
-        WaterReportAdapter adapter = new WaterReportAdapter(this, model.getUserReportsFromDB(this));
-        lv.setAdapter(adapter);
-        System.out.println(model.getUserReportsFromDB(this).toString());
-        //}
+        //Intent intent = new Intent(this, MenuActivity.class);
+        //android.os.SystemClock.sleep(1000);
+        //startActivity(intent);
+        //overridePendingTransition(R.animator.slide_in, R.animator.slide_out);
     }
 
     protected void onPause() {
@@ -117,6 +104,17 @@ Code to run when the activity resumes
         //Change back to SettingsActivity from MapsActivity
         Intent intent = new Intent(this, SettingsActivity.class);
         startActivity(intent);
+        overridePendingTransition(R.animator.x_slide_in, R.animator.hold);
+    }
+
+    /**
+     * Button that allows a user to see their menu page
+     * @param view
+     */
+    public void goMenu(View view) {
+        Intent intent = new Intent(this, MenuActivity.class);
+        startActivity(intent);
+        overridePendingTransition(R.animator.slide_in, R.animator.hold);
     }
 
     /**
