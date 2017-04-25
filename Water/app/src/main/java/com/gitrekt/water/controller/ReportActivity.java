@@ -55,6 +55,13 @@ public class ReportActivity extends AppCompatActivity {
         waterConditionAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
 
         conditionSpinner.setAdapter(waterConditionAdapter);
+
+        try{
+            longitudeField.setText(getIntent().getStringExtra("lon"));
+            latitudeField.setText(getIntent().getStringExtra("lat"));
+        } catch (Exception e) {
+            System.out.println("No location data provided");
+        }
     }
 
     /**

@@ -133,13 +133,19 @@ public class Model {
     public void initializeMap(Context context, GoogleMap googleMap) {
         ArrayList<UserReport> URs = this.getUserReportsFromDB(context);
 
+        //googleMap.addMarker(new MarkerOptions().position(new LatLng(-33, 85)).title("Hey"));
         //Iterate through UserReports and create points on the map
         for (UserReport _report: URs) {
-            double longitude = Double.parseDouble(_report.getLongitude());
-            double latitude = Double.parseDouble(_report.getLatitude());
-            LatLng point = new LatLng(longitude, latitude);
-            googleMap.addMarker(new MarkerOptions().position(point).title(_report.getWt() + _report.getWc()));
-            googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+            try {
+                double longitude = Double.parseDouble(_report.getLongitude());
+                double latitude = Double.parseDouble(_report.getLatitude());
+                LatLng point = new LatLng(longitude, latitude);
+                googleMap.addMarker(new MarkerOptions().position(point).title(_report.getType().toString()
+                        + _report.getCondition().toString()));
+                googleMap.moveCamera(CameraUpdateFactory.newLatLng(point));
+            } catch (Exception e) {
+                System.out.println("Invalid coordinates");
+            }
         }
     }
 
