@@ -2,14 +2,16 @@
 <TableLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:stretchColumns="1">
+    android:stretchColumns="1"
+    android:background="@color/gray">
 // Makes table rows with text views in each row
     // 
     <TableRow>
         <TextView
             android:layout_column="1"
             android:text="@string/user1"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:textColor="@color/white" />
         <TextView
             android:gravity="right"
             android:padding="3dip"
@@ -20,7 +22,8 @@
         <TextView
             android:layout_column="1"
             android:text="@string/water_type"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:textColor="@color/white" />
         <TextView
             android:gravity="right"
             android:padding="3dip"
@@ -31,7 +34,8 @@
         <TextView
             android:layout_column="1"
             android:text="@string/water_condition"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:textColor="@color/white" />
         <TextView
             android:gravity="right"
             android:padding="3dip"
@@ -43,7 +47,8 @@
         <TextView
             android:layout_column="1"
             android:text="@string/location"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:textColor="@color/white" />
         <TextView
             android:gravity="right"
             android:padding="3dip"
@@ -54,7 +59,8 @@
         <TextView
             android:layout_column="1"
             android:text="@string/id"
-            android:padding="3dip" />
+            android:padding="3dip"
+            android:textColor="@color/white" />
         <TextView
             android:gravity="right"
             android:padding="3dip"

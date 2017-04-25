@@ -8,18 +8,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.WaterReportHistory">
-
-    <EditText
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:inputType="textPersonName"
-        android:ems="10"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="52dp"
-        android:id="@+id/searchText"
-        android:hint="Enter a Location" />
 
     <TextView
         android:text="..."
@@ -29,7 +19,8 @@
         android:layout_alignRight="@+id/locationShow"
         android:layout_alignEnd="@+id/locationShow"
         android:layout_marginTop="34dp"
-        android:id="@+id/wtShow" />
+        android:id="@+id/wtShow"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="..."
@@ -39,7 +30,8 @@
         android:layout_alignLeft="@+id/nameShow"
         android:layout_alignStart="@+id/nameShow"
         android:layout_marginTop="35dp"
-        android:id="@+id/wcShow" />
+        android:id="@+id/wcShow"
+        android:textColor="@color/white" />
 
     <TextView
         android:layout_width="wrap_content"
@@ -48,7 +40,8 @@
         android:layout_centerVertical="true"
         android:layout_alignLeft="@+id/locationShow"
         android:layout_alignStart="@+id/locationShow"
-        android:text="..." />
+        android:text="..."
+        android:textColor="@color/white" />
 
     <TextView
         android:text="..."
@@ -58,7 +51,8 @@
         android:id="@+id/locationShow"
         android:layout_below="@+id/nameShow"
         android:layout_toRightOf="@+id/button4"
-        android:layout_toEndOf="@+id/button4" />
+        android:layout_toEndOf="@+id/button4"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="Username:"
@@ -69,7 +63,8 @@
         android:layout_toStartOf="@+id/button4"
         android:layout_marginRight="32dp"
         android:layout_marginEnd="32dp"
-        android:id="@+id/nameLabel" />
+        android:id="@+id/nameLabel"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="WaterType:"
@@ -78,7 +73,8 @@
         android:layout_alignTop="@+id/wtShow"
         android:layout_alignRight="@+id/locationLabel"
         android:layout_alignEnd="@+id/locationLabel"
-        android:id="@+id/wtLabel" />
+        android:id="@+id/wtLabel"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="WaterCondition:"
@@ -87,7 +83,8 @@
         android:layout_alignTop="@+id/wcShow"
         android:layout_alignLeft="@+id/wtLabel"
         android:layout_alignStart="@+id/wtLabel"
-        android:id="@+id/wcLabel" />
+        android:id="@+id/wcLabel"
+        android:textColor="@color/white" />
 
     <TextView
         android:text="Location:"
@@ -97,16 +94,8 @@
         android:layout_alignBaseline="@+id/locationShow"
         android:layout_alignBottom="@+id/locationShow"
         android:layout_alignLeft="@+id/nameLabel"
-        android:layout_alignStart="@+id/nameLabel" />
-
-    <Button
-        android:text="Search"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/button4"
-        android:layout_above="@+id/nameShow"
-        android:layout_centerHorizontal="true"
-        android:layout_marginBottom="53dp" />
+        android:layout_alignStart="@+id/nameLabel"
+        android:textColor="@color/white" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -117,5 +106,30 @@
         android:layout_alignRight="@+id/searchText"
         android:layout_alignEnd="@+id/searchText"
         android:id="@+id/editText2"
-        android:hint="Enter Year" />
+        android:hint="Enter Year"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
+
+    <Button
+        android:text="Search"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/button4"
+        android:layout_below="@+id/editText2"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="19dp"
+        android:background="@color/teal" />
+
+    <EditText
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:inputType="textPersonName"
+        android:ems="10"
+        android:layout_marginTop="52dp"
+        android:id="@+id/searchText"
+        android:hint="Enter a Location"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white" />
 </RelativeLayout>
