@@ -142,6 +142,9 @@ public class MapsActivity <T> extends AppCompatActivity/*FragmentActivity*/ impl
             intent.putExtra("lon", String.valueOf(mLastLocation.getLongitude()));
             intent.putExtra("lat", String.valueOf(mLastLocation.getLatitude()));
             startActivity(intent);
+        } else {
+            Intent intent = new Intent(this, ReportActivity.class);
+            startActivity(intent);
         }
     }
 }
