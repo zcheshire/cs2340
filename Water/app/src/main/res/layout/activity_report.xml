@@ -160,7 +160,7 @@
         android:layout_alignParentTop="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="Quality Report"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         tools:text="@string/qualityReport"

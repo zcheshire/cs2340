@@ -61,7 +61,7 @@
         android:layout_centerHorizontal="true" />
 
     <TextView
-        android:text="TextView"
+        android:text="Login"
         android:layout_height="wrap_content"
         android:id="@+id/textView"
         tools:text="@string/loginscreen"

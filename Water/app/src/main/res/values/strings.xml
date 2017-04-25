@@ -58,6 +58,8 @@
     <string name="purityReport">Purity Report</string>
     <string name="qualityReport">Quality Report</string>
     <string name="loginscreen">Login</string>
+    <string name="registerscreen">Register</string>
+    <string name="userType">Select User Type</string>
     <string name="id5">ID:</string>
     <color name="gray">#303030</color>
     <color name="teal">#92cbc5</color>
