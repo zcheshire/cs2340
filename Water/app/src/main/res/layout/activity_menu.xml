@@ -11,15 +11,27 @@
     android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.MenuActivity">
 
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/darker"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:scaleType="centerCrop"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:paddingBottom="500dp"/>
+
+
     <Button
-        android:text="Home"
+        android:id="@+id/homeButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/homeButton"
-        android:onClick="goHome"
-        android:background="@color/teal"
         android:layout_alignParentTop="true"
-        android:layout_marginTop="0dp" />
+        android:background="@android:drawable/ic_menu_more"
+        android:backgroundTint="@color/teal"
+        android:layout_marginTop="20dp"
+        android:onClick="goHome" />
 
     <ListView
         android:layout_width="match_parent"
@@ -28,9 +40,25 @@
         android:background="@color/white"
         android:backgroundTint="@color/white"
         android:paddingTop="5dp"
+        android:layout_marginTop="20dp"
         android:divider="@color/cast_expanded_controller_ad_label_background_color"
         android:layout_below="@+id/homeButton"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="270dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/logo" />
 
 </RelativeLayout>

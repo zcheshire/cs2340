@@ -12,105 +12,231 @@
     tools:context="com.gitrekt.water.controller.HomeActivity">
 
     <Button
-        android:text="@string/logout"
+        android:id="@+id/logoutButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/logoutButton"
+        android:background="@color/clear"
         android:onClick="logout"
-        android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true"
-        android:background="@color/teal"/>
+        android:text="@string/logout"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/settingsButton"
+        android:layout_alignLeft="@+id/history"
+        android:layout_alignStart="@+id/history" />
+
+    <Button
+        android:id="@+id/mapButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:background="@color/clear"
+        android:onClick="viewMap"
+        android:text="View Availabilty Report"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/menuButton"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_marginLeft="46dp"
+        android:layout_marginStart="46dp" />
+
+    <Button
+        android:id="@+id/menuButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="10dp"
+        android:background="@color/teal"
+        android:onClick="goMenu"
+        android:text="Home"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
+
+    <Button
+        android:id="@+id/addQuality"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/clear"
+        android:onClick="viewQualityReport"
+        android:text="Add Quality Report"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/mapButton"
+        android:layout_alignLeft="@+id/mapButton"
+        android:layout_alignStart="@+id/mapButton" />
+
+
+    <Button
+        android:id="@+id/reportButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/clear"
+        android:onClick="createReport"
+        android:text="Add Purity Report"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/addQuality"
+        android:layout_alignLeft="@+id/addQuality"
+        android:layout_alignStart="@+id/addQuality" />
+
+    <Button
+        android:id="@+id/settingsButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/clear"
+        android:onClick="settings"
+        android:text="@string/settings"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/history"
+        android:layout_alignLeft="@+id/viewQualityReport"
+        android:layout_alignStart="@+id/viewQualityReport" />
+
+
+    <Button
+        android:id="@+id/viewQualityReport"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/clear"
+        android:onClick="viewQualityReports"
+        android:text="View Quality Reports"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/reportButton"
+        android:layout_alignLeft="@+id/reportButton"
+        android:layout_alignStart="@+id/reportButton" />
+
+    <Button
+        android:id="@+id/history"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@color/clear"
+        android:onClick="history"
+        android:text="View History Reports"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/viewQualityReport"
+        android:layout_alignRight="@+id/viewQualityReport"
+        android:layout_alignEnd="@+id/viewQualityReport" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="300dp"
+        android:layout_marginLeft="50dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="0dp"
+        android:adjustViewBounds="true"
+        android:paddingBottom="5dp"
+        android:paddingLeft="0dp"
+        android:paddingRight="0dp"
+        android:paddingTop="0dp"
+        android:scaleType="fitEnd"
+        android:src="@drawable/logo" />
+
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="0dp"
+        android:layout_marginLeft="120dp"
+        android:layout_marginRight="0dp"
+        android:layout_marginTop="250dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/camel" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="415dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="310dp"
+        android:layout_marginTop="85dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop" />
+
+    <ImageView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="367dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="310dp"
+        android:layout_marginTop="133dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="318dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginRight="310dp"
+        android:layout_marginTop="182dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop"
+        android:id="@+id/imageView" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="270dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="230dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="225dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="275dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="175dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="325dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="130dp"
+        android:layout_marginLeft="0dp"
+        android:layout_marginTop="370dp"
+        android:adjustViewBounds="true"
+        android:scaleType="fitEnd"
+        android:src="@drawable/raindrop"
+        android:layout_alignRight="@+id/imageView"
+        android:layout_alignEnd="@+id/imageView" />
 
     <TextView
-        android:text="@string/login_successful"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/loginMessage"
-        android:layout_above="@+id/logoutButton"
-        android:layout_centerHorizontal="true"
-        android:textColor="@color/white" />
-
-    <Button
-        android:text="@string/map"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_below="@+id/loginMessage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/mapButton"
-        android:onClick="viewMap"
-        android:background="@color/teal"/>
-
-    <Button
-        android:text="menu"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_above="@+id/loginMessage"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:id="@+id/menuButton"
-        android:onClick="goMenu"
-        android:background="@color/teal"/>
-
-    <Button
-        android:text="@string/add_qp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/loginMessage"
+        android:layout_marginLeft="25dp"
+        android:layout_marginStart="25dp"
+        android:text="Welcome!"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:id="@+id/addQuality"
-        android:onClick="viewQualityReport"
-        android:background="@color/teal"/>
+        android:layout_marginBottom="37dp" />
 
-
-    <Button
-        android:text="@string/add_report"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/reportButton"
-        android:onClick="createReport"
-        android:background="@color/teal"
-        android:layout_above="@+id/reportListView"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="11dp" />
-
-    <Button
-        android:text="@string/settings"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/settingsButton"
-        android:onClick="settings"
-        android:background="@color/teal"
-        android:layout_alignParentTop="true"
-        android:layout_alignLeft="@+id/mapButton"
-        android:layout_alignStart="@+id/mapButton"
-        android:layout_marginLeft="14dp"
-        android:layout_marginStart="14dp" />
-
-
-    <Button
-        android:text="@string/view_qp"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/viewQualityReport"
-        android:onClick="viewQualityReports"
-        android:background="@color/teal"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/reportButton"
-        android:layout_alignBottom="@+id/reportButton" />
-
-    <Button
-        android:text="History"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/history"
-        android:background="@color/teal"
-        android:layout_alignParentTop="true"
-        android:layout_toRightOf="@+id/viewQualityReport"
-        android:layout_toEndOf="@+id/viewQualityReport"
-        android:layout_alignBottom="@+id/viewQualityReport"
-        android:onClick="history" />
 
 </RelativeLayout>
