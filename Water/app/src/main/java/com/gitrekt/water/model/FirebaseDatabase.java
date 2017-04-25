@@ -77,7 +77,13 @@ public class FirebaseDatabase implements Database {
                 users = new ArrayList<User>();
                 for (DataSnapshot u: ds.getChildren()) {
                     System.out.println(u.getValue());
-                    users.add(u.getValue(User.class));
+
+                    //Workaround since Firebase doesn't support enums
+                    User user = new User();
+                    user.setUserName((String) u.child("userName").getValue());
+                    user.setPassWord((String) u.child("passWord").getValue());
+                    user.setUserType(UserType.valueOf((String) u.child("userType").getValue()));
+                    users.add(user);
                 }
             }
             public void onCancelled(DatabaseError de) { }
@@ -87,7 +93,27 @@ public class FirebaseDatabase implements Database {
                 qrs = new ArrayList<QualityReport>();
                 for (DataSnapshot qr: ds.getChildren()) {
                     System.out.println(qr.getValue());
-                    qrs.add(qr.getValue(QualityReport.class));
+
+                    //Workaround since Firebase doesn't support enums
+                    DateFormat df = new SimpleDateFormat("dd/MM/yy HH:mm:ss");
+                    Date parsedDate = new Date();
+                    try {
+                        parsedDate = df.parse((String) qr.child("date").getValue());
+                    } catch (Exception e) {
+                        System.out.println("Error parsing date for QR");
+                    }
+
+                    QualityReport qualityReport
+                            = new QualityReport((String) qr.child("username").getValue(),
+                            OverallCondition.valueOf((String) qr.child("overallCondition").getValue()),
+                            (String) qr.child("location").getValue(),
+                            (String) qr.child("longitude").getValue(),
+                            (String) qr.child("latitude").getValue(),
+                            parsedDate,
+                            (String) qr.child("virusPPM").getValue(),
+                            (String) qr.child("contaminantPPM").getValue());
+
+                    qrs.add(qualityReport);
                 }
             }
             public void onCancelled(DatabaseError de) { }
@@ -97,6 +123,15 @@ public class FirebaseDatabase implements Database {
                 urs = new ArrayList<UserReport>();
                 for (DataSnapshot ur: ds.getChildren()) {
                     System.out.println(ur.getValue());
+
+                    //Workaround since Firebase doesn't support enums
+                    UserReport userReport
+                            = new UserReport((String) ur.child("username").getValue(),
+                            WaterType.valueOf((String) ur.child("waterType").getValue()),
+                            ConditionType.valueOf((String) ur.child("conditionType").getValue()),
+                            (String) ur.child("location").getValue(),
+                            (String) ur.child("longitude").getValue(),
+                            (String) ur.child("latitude").getValue());
                     urs.add(ur.getValue(UserReport.class));
                 }
             }

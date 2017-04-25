@@ -62,7 +62,7 @@ public class ReportActivity extends AppCompatActivity {
      * @param v
      */
     void submitReport(View v) {
-        UserReport _report = new UserReport(model.getCurrentUser(),
+        UserReport _report = new UserReport(model.getCurrentUser().getUserName(),
                 (WaterType) typeSpinner.getSelectedItem(),
                 (ConditionType) conditionSpinner.getSelectedItem(),
                 locationField.getText().toString(), longitudeField.getText().toString(), latitudeField.getText().toString());
