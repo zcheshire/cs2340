@@ -140,7 +140,9 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
         android:popupBackground="@color/place_autocomplete_search_hint"
-        android:scrollbarSize="20dp" />
+        android:scrollbarSize="20dp"
+        android:textColor="@color/white"
+        style="@style/mySpinnerItemStyle" />
 
     <Button
         android:text="@string/submit"

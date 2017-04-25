@@ -69,7 +69,8 @@
         android:layout_alignEnd="@+id/longitudeField"
         android:id="@+id/latitudeField"
         android:hint="Latitude"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        android:textColor="@color/white" />
 
     <Spinner
         android:layout_width="match_parent"
@@ -78,7 +79,8 @@
         android:id="@+id/conditionSpinner"
         android:layout_below="@+id/textView8"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:textColorHint=/>
 
     <TextView
         android:text="@string/water_type2"
@@ -116,7 +118,8 @@
         android:layout_marginTop="58dp"
         android:layout_below="@+id/cancelButton"
         android:layout_centerHorizontal="true"
-        android:textColorHint="@color/white" />
+        android:textColorHint="@color/white"
+        android:textColor="@color/white" />
 
     <EditText
         android:layout_width="wrap_content"
@@ -126,6 +129,7 @@
         android:id="@+id/longitudeField"
         android:hint="longitude"
         android:textColorHint="@color/white"
+        android:textColor="@color/white"
         android:layout_below="@+id/locationField"
         android:layout_alignLeft="@+id/locationField"
         android:layout_alignStart="@+id/locationField" />
