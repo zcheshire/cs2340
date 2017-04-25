@@ -8,6 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/gray"
     tools:context="com.gitrekt.water.controller.RegisterActivity">
 
     <TextView
@@ -21,17 +22,35 @@
         android:layout_alignParentStart="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
-        android:textAlignment="center" />
+        android:textAlignment="center"
+        android:textColor="@color/white"
+        android:textSize="18sp" />
 
     <TextView
-        android:text="@string/email"
-        android:layout_width="wrap_content"
+        android:text="Register"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="30dp"
-        android:layout_marginStart="30dp"
-        android:layout_marginTop="82dp"
-        android:id="@+id/textView3"
-        android:layout_below="@+id/textView2"
+        android:id="@+id/textView"
+        tools:text="@string/registerscreen"
+        android:textSize="30sp"
+        android:textColor="@color/white"
+        android:textStyle="bold"
+        android:layout_width="match_parent"
+        android:paddingLeft="10dp"
+        android:paddingTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/cevrons"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:paddingTop="30dp"
+        android:paddingLeft="130dp"
+        android:paddingRight="160dp"
+        android:paddingBottom="5dp"
+        android:scaleType="fitStart"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />
 
@@ -39,71 +58,112 @@
         android:text="@string/password"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
         android:id="@+id/textView4"
+        android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:textColorHighlight="@color/white"
+        android:textColor="@color/white"
+        android:textSize="18sp"
         android:layout_below="@+id/textView3"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp" />
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:text="@string/email"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="31dp"
+        android:id="@+id/textView3"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/textView2"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4" />
+
+    <Button
+        android:text="@string/cancel3"
+        android:layout_width="wrap_content"
+        android:id="@+id/cancel"
+        android:onClick="cancelRegister"
+        android:background="@color/teal"
+        android:layout_marginTop="82dp"
+        android:layout_below="@+id/registerPassword"
+        android:layout_toLeftOf="@+id/registerPassword"
+        android:layout_toStartOf="@+id/registerPassword"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:text="@string/userType"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/white"
+        android:textSize="18sp"
+        android:layout_below="@+id/registerPassword"
+        android:layout_alignLeft="@+id/textView4"
+        android:layout_alignStart="@+id/textView4"
+        android:layout_marginTop="16dp" />
+
+    <Spinner
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:id="@+id/userTypeSpinner"
+        android:foregroundTint="@color/white"
+        android:layout_centerVertical="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
+    <Button
+        android:text="@string/register2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/register"
+        android:onClick="performRegister"
+        android:background="@color/teal"
+        android:layout_alignBaseline="@+id/cancel"
+        android:layout_alignBottom="@+id/cancel"
+        android:layout_alignRight="@+id/registerPassword"
+        android:layout_alignEnd="@+id/registerPassword" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPersonName"
         android:ems="10"
-        android:layout_alignBottom="@+id/textView4"
-        android:layout_toRightOf="@+id/textView4"
-        android:layout_toEndOf="@+id/textView4"
-        android:layout_marginLeft="16dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="37dp"
         android:id="@+id/registerEmail"
-        android:hint="@string/email1" />
-
-    <Button
-        android:text="@string/register2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="101dp"
-        android:id="@+id/register"
-        android:onClick="performRegister"
-        android:layout_marginRight="18dp"
-        android:layout_marginEnd="18dp"
-        android:layout_below="@+id/registerPassword"
-        android:layout_alignRight="@+id/registerPassword"
-        android:layout_alignEnd="@+id/registerPassword" />
-
-    <Button
-        android:text="@string/cancel3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/cancel"
-        android:layout_marginLeft="21dp"
-        android:layout_marginStart="21dp"
-        android:layout_alignBaseline="@+id/register"
-        android:layout_alignBottom="@+id/register"
-        android:layout_alignLeft="@+id/textView3"
-        android:layout_alignStart="@+id/textView3"
-        android:onClick="cancelRegister" />
-
-    <Spinner
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:id="@+id/userTypeSpinner"
-        android:layout_above="@+id/cancel"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="32dp" />
+        android:hint="@string/email1"
+        android:textColor="@android:color/white"
+        android:textColorHint="@color/white"
+        android:layout_alignBaseline="@+id/textView3"
+        android:layout_alignBottom="@+id/textView3"
+        android:layout_centerHorizontal="true" />
 
     <EditText
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:inputType="textPassword"
         android:ems="10"
-        android:layout_alignTop="@+id/textView4"
-        android:layout_alignRight="@+id/registerEmail"
-        android:layout_alignEnd="@+id/registerEmail"
         android:id="@+id/registerPassword"
-        android:hint="@string/password2" />
+        android:hint="@string/password2"
+        android:textColorHint="@color/white"
+        android:layout_below="@+id/registerEmail"
+        android:layout_toRightOf="@+id/textView4"
+        android:layout_toEndOf="@+id/textView4"
+        android:layout_marginLeft="15dp"
+        android:layout_marginStart="15dp" />
+
+    <ImageView
+        android:layout_height="match_parent"
+        android:src="@drawable/squares"
+        android:layout_width="match_parent"
+        android:adjustViewBounds="true"
+        android:paddingTop="300dp"
+        android:paddingLeft="60dp"
+        android:paddingRight="50dp"
+        android:paddingBottom="0dp"
+        android:scaleType="fitStart"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+
 </RelativeLayout>

@@ -22,7 +22,8 @@
         android:layout_marginBottom="13dp"
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
-        android:background="@color/teal"/>
+        android:background="@color/clear"
+        android:textSize="20sp"/>
 
     <Button
         android:text="@string/register1"
@@ -32,10 +33,11 @@
         style="@style/Widget.AppCompat.Button.Borderless"
         android:textColor="@color/common_google_signin_btn_text_dark_default"
         android:onClick="register"
-        android:background="@color/teal"
+        android:background="@color/clear"
         android:layout_alignParentBottom="true"
         android:layout_alignLeft="@+id/loginButton"
-        android:layout_alignStart="@+id/loginButton" />
+        android:layout_alignStart="@+id/loginButton"
+        android:textSize="20sp"/>
 
     <ImageView
         android:layout_height="match_parent"
